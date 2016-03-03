@@ -1,14 +1,13 @@
 
 	/*
 	*
-	*Autores : Miguel Guimarães, Miguel Rodrigues, Xavier Rodrigues
+	*Autores : Miguel Guimarães, Miguel Rodrigues, Xavier Rodrigues, Emanuel Fernandes
 	*Data : 2016 - 03 - 01
 	*
 	*/
 
 #include "const.h"
-#include <glut.h>
-#include <math.h>
+
 vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos da figura a desenhar
 
 						   //Variaveis uteis para o controlo da camara
