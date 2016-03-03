@@ -7,7 +7,9 @@
 	*/
 
 #include "const.h"
-
+#include "forma.h"
+#include <GL/glut.h>
+#include <math.h>
 vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos da figura a desenhar
 
 						   //Variaveis uteis para o controlo da camara
@@ -250,8 +252,8 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 					f >> form;
 
 					Forma* s;
-					if (form.compare(FORMA_RECTANGULO) == 0) {
-						s = new Rectangulo();
+					if (form.compare(FORMA_PLANO) == 0) {
+						s = new Plano();
 					}
 					else if (form.compare(FORMA_TRIANGULO) == 0) {
 						s = new Triangulo();
@@ -259,8 +261,8 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 					else if (form.compare(FORMA_CIRCULO) == 0) {
 						s = new Circulo();
 					}
-					else if (form.compare(FORMA_PARALEL) == 0) {
-						s = new Paralelepipedo();
+					else if (form.compare(FORMA_CAIXA) == 0) {
+						s = new Caixa();
 					}
 					else if (form.compare(FORMA_ESFERA) == 0) {
 						s = new Esfera();
@@ -268,7 +270,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 					else if (form.compare(FORMA_CONE) == 0) {
 						s = new Cone();
 					}
-					s->read3DfromFile((*it));
+					s->readfromFile((*it));
 					Formas.push_back(s);
 				}
 				// Chamada explícita para desenhar cena
@@ -304,8 +306,8 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 
 				// Gerar ficheiro com os triângulos
 				cout << "a gerar rectangulo ...\n";
-				Rectangulo* p = new Rectangulo();
-				p->gerarRectangulo(l, c, file);
+				Plano* p = new Plano();
+				p->geraPlano(l, c, file);
 				cout << "end.\n\n";
 			}
 			else if ((args.at(1).compare("circ") == 0) && args.size() == 5) {
@@ -316,7 +318,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 				// Gerar ficheiro com os triângulos
 				cout << "a gerar circulo ...\n";
 				Circulo* c = new Circulo();
-				c->gerarCirculo(raio1, nlados, file);
+				c->geraCirculo(raio1, nlados, file);
 				cout << "end.\n\n";
 			}
 			else if ((args.at(1).compare("tri") == 0) && args.size() == 4) {
@@ -326,7 +328,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 				// Gerar ficheiro com os triângulos
 				cout << "a gerar triangulo ...\n";
 				Triangulo* p = new Triangulo();
-				p->gerarTriangulo(lado, file);
+				p->geraTriangulo(lado, file);
 				cout << "end.\n\n";
 			}
 			else if ((args.at(1).compare("paralel") == 0) && args.size() == 6) {
@@ -337,8 +339,8 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 
 				// Gerar ficheiro com os triângulos
 				cout << "a gerar parelelepipedo ...\n";
-				Paralelepipedo* p = new Paralelepipedo();
-				p->gerarParalelepipedo(l, c, h, file);
+				Caixa* p = new Caixa();
+				p->geraCaixa(l, c, h, file);
 				cout << "end.\n\n";
 			}
 			else if ((args.at(1).compare("esfera") == 0) && args.size() == 6) {
@@ -350,7 +352,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 				// Gerar ficheiro com os triângulos
 				cout << "a gerar esfera ...\n";
 				Esfera* esfera = new Esfera();
-				esfera->gerarEsfera(raio1, fatias, camadas, file);
+				esfera->geraEsfera(raio1, fatias, camadas, file);
 				cout << "end.\n\n";
 			}
 			else if ((args.at(1).compare("cone") == 0) && args.size() == 7) {
@@ -363,7 +365,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 				// Gerar ficheiro com os triângulos
 				cout << "a gerar cone ...\n";
 				Cone* c = new Cone();
-				c->gerarCone(h, r, nlados, ncamadas, file);
+				c->geraCone(h, r, nlados, ncamadas, file);
 				cout << "end.\n\n";
 			}
 			else { cout << ERROR_INVALID_ARGS; }
