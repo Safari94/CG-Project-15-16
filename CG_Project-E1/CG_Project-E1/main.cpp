@@ -7,9 +7,7 @@
 	*/
 
 #include "const.h"
-#include "forma.h"
-#include <GL/glut.h>
-#include <math.h>
+
 vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos da figura a desenhar
 
 						   //Variaveis uteis para o controlo da camara
@@ -198,12 +196,12 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		doc.LoadFile();
 		TiXmlHandle docHandle(&doc);
 
-		TiXmlElement * ficheiro = docHandle.FirstChild("imagem").FirstChild("modelo").ToElement();
+		TiXmlElement * ficheiro = docHandle.FirstChild("figura").FirstChild("forma").ToElement();
 		while (ficheiro)
 		{
 			circum = ficheiro->Attribute("ficheiro");
 			figuras.push_back(string(circum));
-			ficheiro = ficheiro->NextSiblingElement("modelo");
+			ficheiro = ficheiro->NextSiblingElement("forma");
 		}
 
 		return figuras;
@@ -233,7 +231,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 	}
 
 	/**Função que prepara as figuras para desenhar a partir de uma fonte .xml e invoca o ciclo glut*/
-	int gerar_figurar(vector<string> args)
+	int gerar_figura(vector<string> args)
 	{
 		string filename;
 		string form;
@@ -299,13 +297,13 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 			return -1;
 		}
 		try {
-			if ((args.at(1).compare("rec") == 0) && args.size() == 5) {
+			if ((args.at(1).compare("pln") == 0) && args.size() == 5) {
 				file = args.at(4);
 				float c = stof(args.at(2));
 				float l = stof(args.at(3));
 
 				// Gerar ficheiro com os triângulos
-				cout << "a gerar rectangulo ...\n";
+				cout << "a gerar plano ...\n";
 				Plano* p = new Plano();
 				p->geraPlano(l, c, file);
 				cout << "end.\n\n";
@@ -331,14 +329,14 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 				p->geraTriangulo(lado, file);
 				cout << "end.\n\n";
 			}
-			else if ((args.at(1).compare("paralel") == 0) && args.size() == 6) {
+			else if ((args.at(1).compare("caixa") == 0) && args.size() == 6) {
 				file = args.at(5);
 				float l = stof(args.at(2));
 				float c = stof(args.at(3));
 				float h = stof(args.at(4));
 
 				// Gerar ficheiro com os triângulos
-				cout << "a gerar parelelepipedo ...\n";
+				cout << "a gerar Caixa ...\n";
 				Caixa* p = new Caixa();
 				p->geraCaixa(l, c, h, file);
 				cout << "end.\n\n";
@@ -396,7 +394,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 			return gerador(playerInfoVector);
 		}
 		else if (playerInfoVector.at(0).compare("desenhar") == 0 && cont != 0) {
-			return gerar_cena(playerInfoVector);
+			return gerar_figura(playerInfoVector);
 		}
 		else if (playerInfoVector.at(0).compare("help") == 0 && cont != 0) {
 			cout << MESSAGE_HELP;

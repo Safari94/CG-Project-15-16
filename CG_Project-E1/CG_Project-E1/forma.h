@@ -24,9 +24,10 @@ public:
 
 class Forma
 {
-public:
+protected:
 	virtual ~Forma() {};
 	vector<Ponto3D> tris;  // vetor de triangulos da forma
+public:
 	string nome;
 	virtual void readfromFile(string filename);
 	virtual void draw() = 0;

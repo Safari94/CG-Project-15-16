@@ -8,7 +8,7 @@
 #define _USE_MATH_DEFINES
 #include "Forma.h"
 
-#include <GL/glut.h>
+#include <glut.h>
 #include <string>
 #include <fstream>
 #include <vector>
@@ -75,7 +75,7 @@ void Triangulo::geraTriangulo(float l, string filename)
 	writetoFile(filename);
 }
 
-/* Escreve um Triangulo para ficheiro xml */
+/* Escreve um Triangulo para ficheiro .3d */
 void Triangulo::writetoFile(string filename)
 {
 	float h = sinf(M_PI / 3) * (lado / 2);
@@ -124,7 +124,7 @@ void Circulo::geraCirculo(float r, int l, string filename)
 	writetoFile(filename);
 }
 
-/* Escreve um Circulo para ficheiro xml */
+/* Escreve um Circulo para ficheiro .3d */
 void Circulo::writetoFile(string filename)
 {
 	float alpha = 2 * M_PI;
@@ -176,7 +176,7 @@ void Plano::geraPlano(float comprimento, float largura, string filename)
 	writetoFile(filename);
 }
 
-/* Escreve um Plano para ficheiro xml */
+/* Escreve um Plano para ficheiro .3d */
 void Plano::writetoFile(string filename)
 {
 	ofstream file(filename);
@@ -237,7 +237,7 @@ void Caixa::geraCaixa(float comprimento, float largura, float altura, string fil
 	writetoFile(filename);
 }
 
-/* Escreve uma Caixa para ficheiro xml */
+/* Escreve uma Caixa para ficheiro caixa.3d */
 void Caixa::writetoFile(string filename)
 {
 	ofstream file(filename);
@@ -332,7 +332,7 @@ void Esfera::geraEsfera(float raio, float niveis, float fatias, string filename)
 	writetoFile(filename);
 }
 
-/* Escreve uma Esfera para ficheiro xml */
+/* Escreve uma Esfera para ficheiro .3d */
 void Esfera::writetoFile(string filename)
 {
 	ofstream file(filename);

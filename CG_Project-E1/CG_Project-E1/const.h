@@ -12,7 +12,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <GL/glut.h>
+#include <glut.h>
 #include <math.h>
 #include <vector>
 #include <sstream>
@@ -28,7 +28,7 @@
 #define ERROR_COMMAND_NO_EXISTS "error: o comando invocado nao existe.\n\n"
 #define ERROR_FILE_NF "error: ficheiro nao existe.\n\n"
 #define ERROR_FORMAT_EXCEPTION "error: formato inesperado.\n\n"
-#define MESSAGE_HELP "-Manual-\n[exit]: sair do motor3D\n\n[gerador] opcoes:\n\t[rec largura comprimento fich]\n\t[tri lado fich]\n\t[circ raio nlados fich]\n\t[paralel largura comprimento altura fich]\n\t[esfera raio ncamadas nfatias fich]\n\t[cone altura raio nlados ncamadas fich]\n\n[desenhar fich.xml]: desenhar uma cena (apenas fich extensao .xml)\n\n[help]: consultar o manual\n\n"
+#define MESSAGE_HELP "-Manual-\n[exit]: sair do builder3D\n\n[gerador] opcoes:\n\t[pln largura comprimento fich]\n\t[tri lado fich]\n\t[circ raio nlados fich]\n\t[caixa largura comprimento altura fich]\n\t[esfera raio ncamadas nfatias fich]\n\t[cone altura raio nlados ncamadas fich]\n\n[desenhar fich.xml]: desenhar a figura (apenas fich extensao .xml)\n\n[help]: consultar o manual\n\n"
 
 // Nomes dos Formas
 #define FORMA_TRIANGULO "TRIANGULO"
