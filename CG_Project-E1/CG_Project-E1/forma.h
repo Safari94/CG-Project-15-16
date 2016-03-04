@@ -91,12 +91,12 @@ class Cone : public Forma
 {
 public:
 	Cone();
-	float a;
+	float altura;
 	float raio;
-	float lados;
-	float niveis;
+	float nlados;
+	float ncamadas;
 	void readfromFile(string filename) override;
-	void geraCone(float altura, float raio, float lados, float niveis, string filename);
+	void geraCone(float altura, float raio, int nlados, int ncamadas, string filename);
 	void draw();
 	void writetoFile(string filename);
 };

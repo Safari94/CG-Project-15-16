@@ -100,7 +100,7 @@ void Triangulo::draw()
 	int n = tris.size();
 	for (int i = 0; i < n; i += 3) {
 		glBegin(GL_TRIANGLES);
-		glColor3f(1, 1, 1);
+		glColor3f(1, 1, 0.5);
 
 		glVertex3f(tris[i].x, tris[i].y, tris[i].z);
 		glVertex3f(tris[i + 1].x, tris[i + 1].y, tris[i + 1].z);
@@ -335,24 +335,24 @@ void Esfera::geraEsfera(float raio, float niveis, float fatias, string filename)
 /* Escreve uma Esfera para ficheiro .3d */
 void Esfera::writetoFile(string filename)
 {
-	ofstream file(filename);
+	ofstream file;
+	file.open(filename);
 	file << "ESFERA\n";
-
 	int i, j;
-	double hstep = (2 * M_PI) / f;
-	double vstep = (M_PI) / n;
-	double altura = r*sin((M_PI / 2) - hstep);
+	double passoH = (2 * M_PI) / f;
+	double passoV = (M_PI) / n;
+	double altura = r* sin((M_PI / 2) - passoV);
 	double alturaCima = r;
 
 	for (i = 0; i < f; i++) {
 
-		double actualX = r*sin(i*hstep);
-		double actualZ = r*cos(i*vstep);
-		double nextX = r*sin((i + 1)*vstep);
-		double nextZ = r*cos((i + 1)*vstep);
+		double actualX = r*sin(i*passoH);
+		double actualZ = r*cos(i*passoH);
+		double nextX = r*sin((i + 1)*passoH);
+		double nextZ = r*cos((i + 1)*passoH);
 		double actX, actZ, nexX, nexZ, cimaActX, cimaActZ, cimaNexX, cimaNexZ;
 
-		for (j = 1; j < n + 2; j++) {
+		for (j = 1; j < n + 2; j++){
 
 
 			double aux = cos(asin(altura / r));
@@ -376,11 +376,11 @@ void Esfera::writetoFile(string filename)
 			file << nexX << " " << altura << " " << nexZ << "\n";
 
 			alturaCima = altura;
-			altura = r* sin((M_PI / 2) - (hstep*j));
+			altura = r* sin((M_PI / 2) - (passoV*j));
 
 		}
 
-		altura = r* sin((M_PI / 2) - hstep);
+		altura = r* sin((M_PI / 2) - passoV);
 		alturaCima = r;
 
 		actualX = nextX;
@@ -410,20 +410,31 @@ void Esfera::draw()
 
 Cone::Cone()
 {
-	a = 0.f;
+	altura = 0.f;
 	raio = 0.0f;
-	lados = 0.0f;
-	niveis = 0.0f;
+	nlados = 0.0f;
+	ncamadas = 0.0f;
 }
+void Cone::geraCone(float altura, float raio, int nlados, int ncamadas, string filename)
+{
+	this->raio = raio; 
+	this->altura = altura;
+	this->nlados = nlados;
+	this->ncamadas = ncamadas; 
+	writetoFile(filename);
+}
+
+
 void Cone::readfromFile(string filename)
 {
-	std::fstream file(filename, std::ios_base::in);
-	file >> nome;
-	file >> a;
-	file >> raio;
-	file >> lados;
-	file >> niveis;
+	std::fstream file(filename, std::ios_base::in); // Nome do ficheiro supostamente temos de ir buscá-lo a um ficheiro .xml?
+	
 
+	file >> nome;
+	file >> altura;
+	file >> raio;
+	file >> nlados;
+	file >> ncamadas;
 	float x, y, z;
 	while (file >> x >> y >> z) {
 		Ponto3D t;
@@ -433,56 +444,47 @@ void Cone::readfromFile(string filename)
 	file.close();
 }
 
-void Cone::geraCone(float altura, float raio, float lados, float niveis, string filename)
-{
-	this->raio = raio;
-	this->a = a;
-	this->niveis = niveis;
-	this->lados = lados;
-	writetoFile(filename);
-}
-
-/* Escreve um Cone para ficheiro xml */
+/*Função que internamente à classe gera o ficheiro os triângulos*/
 void Cone::writetoFile(string filename)
 {
-	ofstream file(filename);
+	ofstream file;
+	file.open(filename);
 
 	int i;
-	float hstep = (2 * M_PI) / (float)lados;
-	float vstep = a / (float)niveis;
-	float rstep = raio / (float)niveis;
+	float incAngulo = (2 * M_PI) / (float)nlados;
+	float incAltura = altura / (float)ncamadas;
+	float incRaio = raio / (float)ncamadas;
 	float alpha, h;
 	h = 0; alpha = 2 * M_PI;
 
 	file << "CONE\n";
-	file << a << "\n";
+	file << altura << "\n";
 	file << raio << "\n";
-	file << lados << "\n";
-	file << niveis << "\n";
+	file << nlados << "\n";
+	file << ncamadas << "\n";
 	file << 0.0f << " " << 0.0f << " " << 0.0f << "\n";
-	for (i = 0; i <= lados; i++) {
+	for (i = 0; i <= nlados; i++) {
 		file << raio*sinf(alpha) << " " << 0 << " " << raio*cosf(alpha) << "\n";
-		alpha -= hstep;
+		alpha -= incAngulo;
 	}
 
 	alpha = 0;
 
-	for (i = 0; i < niveis; i++) {
+	for (i = 0; i < ncamadas; i++) {
 		alpha = 0;
-		file << 0 << " " << a << " " << 0 << "\n";
-		for (int j = 0; j <= lados; j++) {
+		file << 0 << " " << altura << " " << 0 << "\n";
+		for (int j = 0; j <= nlados; j++) {
 			file << raio*sinf(alpha) << " " << h << " " << raio*cosf(alpha) << "\n";
-			alpha += hstep;
+			alpha += incAngulo;
 		}
-		h += vstep;
-		raio = raio - rstep;
+		h += incAltura;
+		raio = raio - incRaio;
 	}
 
 	file.close();
-
 }
 
-/* Desenha todos os Triangulos no vetor tris que devem formar um Cone */
+
 void Cone::draw()
 {
 	int n = tris.size();
@@ -490,9 +492,18 @@ void Cone::draw()
 
 	glBegin(GL_TRIANGLE_FAN);
 	glColor3f(1, 1, 1);
-
-	for (i = 0; i < n; i++) {
+	for (i = 0; i <= nlados + 1; i++) {
 		glVertex3f(tris[i].x, tris[i].y, tris[i].z);
 	}
 	glEnd();
+
+	for (; i < n;) {
+		glBegin(GL_TRIANGLE_FAN);
+		glColor3f(1, 1, 1);
+		glVertex3f(tris[i].x, tris[i].y, tris[i].z); i++;
+		for (int j = 0; j <= nlados; j++) {
+			glVertex3f(tris[i].x, tris[i].y, tris[i].z); i++;
+		}
+		glEnd();
+	}
 }
