@@ -7,18 +7,20 @@
 	*/
 
 #include "const.h"
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos da figura a desenhar
 
 						   //Variaveis uteis para o controlo da camara
 	float px, py, pz;
-	float alpha, beta, raio;
+	float alpha, beta;
 	float altura;
 
 	//Variavel a ser usada a como opçao do menu
 	int opcao;
 	float x_tela, y_tela; //Variaveis para guardar posição da tela em que se carrega no rato
-
+	float raio = 10, cam_h = 0, cam_v = 0.5, camh_x = 0, camh_y = 0;
 	int estado_botao = 0;
 
 	void changeSize(int w, int h) {
@@ -59,7 +61,13 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 
 		// Atualizar câmara
 		glLoadIdentity();
-		gluLookAt(px, py, pz,
+		//Câmara normal
+		/*gluLookAt(px, py, pz,
+			0.0, 0.0, 0.0,
+			0.0f, 1.0f, 0.0f);*/
+
+		//Câmera em modo explorador
+		gluLookAt(raio*sin(cam_h + camh_x)*cos(cam_v + camh_y), raio*sin(cam_v + camh_y), raio*cos(cam_h + camh_x)*cos(cam_v + camh_y),
 			0.0, 0.0, 0.0,
 			0.0f, 1.0f, 0.0f);
 
@@ -91,15 +99,48 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 			if (beta > -(M_PI / 2) + 0.1) beta -= 0.1; // move down
 			break;
 		case'e': // Menos zoom
-			if (raio>0) raio -= 0.1;
+			if (raio>0) raio -= 0.4;
 			break;
 		case 'r': // Mais zoom
-			raio += 0.1;
+			raio += 0.4;
 			break;
 		default:
 			break;
 		}
 		glutPostRedisplay();
+	}
+
+	void rato(int botao, int estado, int x, int y) {
+		if (botao == GLUT_LEFT_BUTTON) {
+			if (estado == GLUT_DOWN) {
+				estado_botao = 1;
+				x_tela = x;
+				y_tela = y;
+			}
+			else {
+				estado_botao = 0;
+				cam_v += camh_y;
+				cam_h += camh_x;
+				camh_x = 0;
+				camh_y = 0;
+			}
+		}
+	}
+
+	void mov_rato(int x, int y) {
+		float teste;
+		if (estado_botao) {
+			if (x_tela != x)
+				camh_x = (x_tela - x)*0.007;
+
+			if (y_tela != y) {
+				teste = (y_tela - y)*0.01;
+				if (teste + cam_v>-M_PI_2 && teste + cam_v<M_PI_2)
+					camh_y = teste;
+			}
+
+			glutPostRedisplay();
+		}
 	}
 
 	/*Funçao com opçoes para eventos de escolha do menu*/
@@ -174,6 +215,8 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		glutReshapeFunc(changeSize);
 		glutIdleFunc(renderScene);
 		glutKeyboardFunc(teclado1);
+		glutMouseFunc(rato);
+		glutMotionFunc(mov_rato);
 
 		// Criação do menu
 		menu();
