@@ -155,7 +155,7 @@ void Circulo::draw()
 	glBegin(GL_TRIANGLE_FAN);
 	glColor3f(1, 1, 1);
 
-	for (i = 0; i <= n; i++) {
+	for (i = 0; i < n; i++) {
 		glVertex3f(tris[i].x, tris[i].y, tris[i].z);
 	}
 
@@ -308,7 +308,7 @@ void Caixa::draw()
 	glBegin(GL_TRIANGLE_FAN);
 	glColor3f(1, 1, 1);
 
-	for (int i = 0; i <= n; i++) {
+	for (int i = 0; i < n; i++) {
 		glVertex3f(tris[i].x, tris[i].y, tris[i].z);
 	}
 
@@ -395,14 +395,15 @@ void Esfera::writetoFile(string filename)
 void Esfera::draw()
 {
 	int n = tris.size();
-	glBegin(GL_TRIANGLE_FAN);
-	glColor3f(1, 1, 1);
+	for (int i = 0; i < n; i += 3) {
+		glBegin(GL_TRIANGLES);
+		glColor3f(1, 0, 0);
 
-	for (int i = 0; i <= n; i++) {
 		glVertex3f(tris[i].x, tris[i].y, tris[i].z);
+		glVertex3f(tris[i + 1].x, tris[i + 1].y, tris[i + 1].z);
+		glVertex3f(tris[i + 2].x, tris[i + 2].y, tris[i + 2].z);
+		glEnd();
 	}
-
-	glEnd();
 }
 
 /*------------------------- Cone ----------------------------*/
@@ -490,7 +491,7 @@ void Cone::draw()
 	glBegin(GL_TRIANGLE_FAN);
 	glColor3f(1, 1, 1);
 
-	for (i = 0; i <= n; i++) {
+	for (i = 0; i < n; i++) {
 		glVertex3f(tris[i].x, tris[i].y, tris[i].z);
 	}
 	glEnd();

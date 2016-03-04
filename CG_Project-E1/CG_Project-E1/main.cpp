@@ -17,6 +17,9 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 
 	//Variavel a ser usada a como opçao do menu
 	int opcao;
+	float x_tela, y_tela; //Variaveis para guardar posição da tela em que se carrega no rato
+
+	int estado_botao = 0;
 
 	void changeSize(int w, int h) {
 
@@ -141,6 +144,8 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		beta = (M_PI / 3);
 		raio = 2;
 	}
+
+
 
 	/**Função que inicializa os parâmetros do glut criando a respetiva janela para desenhar a cena*/
 	int prepare_glut()
