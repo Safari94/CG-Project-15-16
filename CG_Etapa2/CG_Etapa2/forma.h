@@ -65,6 +65,7 @@ protected:
 	vector<Ponto3D> tris;  // vetor de triangulos da forma
 	vector<TransformsWrapper> transforms; // Rotações e Translações
 public:
+	Ponto3D color; // Cor da forma
 	string nome;
 	virtual void readfromFile(string filename);
 	virtual void draw() = 0;

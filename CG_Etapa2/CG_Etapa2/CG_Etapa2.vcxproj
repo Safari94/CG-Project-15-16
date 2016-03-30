@@ -18,6 +18,21 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="const.h" />
+    <ClInclude Include="forma.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="tinystr.h" />
+    <ClInclude Include="tinyxml.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="forma.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="tinystr.cpp" />
+    <ClCompile Include="tinyxml.cpp" />
+    <ClCompile Include="tinyxmlerror.cpp" />
+    <ClCompile Include="tinyxmlparser.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BE06D282-684D-47A8-B2C7-2B8E3F3D8C05}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -145,21 +160,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\CG_Project-E1\forma.cpp" />
-    <ClCompile Include="..\..\CG_Project-E1\main.cpp" />
-    <ClCompile Include="..\..\CG_Project-E1\tinystr.cpp" />
-    <ClCompile Include="..\..\CG_Project-E1\tinyxml.cpp" />
-    <ClCompile Include="..\..\CG_Project-E1\tinyxmlerror.cpp" />
-    <ClCompile Include="..\..\CG_Project-E1\tinyxmlparser.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\CG_Project-E1\const.h" />
-    <ClInclude Include="..\..\CG_Project-E1\forma.h" />
-    <ClInclude Include="..\..\CG_Project-E1\main.h" />
-    <ClInclude Include="..\..\CG_Project-E1\tinystr.h" />
-    <ClInclude Include="..\..\CG_Project-E1\tinyxml.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

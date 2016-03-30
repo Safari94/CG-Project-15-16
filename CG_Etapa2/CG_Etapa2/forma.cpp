@@ -44,7 +44,7 @@ string Ponto3D::toString()
 
 /*Classe responsavel por fazer a rotaçao*/
 Rotacao::Rotacao() {
-	ang = 0.0f; x = 0.0f; y = 0.0f; z = 0.0f
+	ang = 0.0f; x = 0.0f; y = 0.0f; z = 0.0f;
 }
 
 void Rotacao::printRotacao() const
@@ -141,7 +141,7 @@ void Triangulo::draw()
 	transformacoes();
 	for (int i = 0; i < n; i += 3) {
 		glBegin(GL_TRIANGLES);
-		glColor3f(1, 1, 0.5);
+		glColor3f(color.x, color.y, color.z);
 
 		glVertex3f(tris[i].x, tris[i].y, tris[i].z);
 		glVertex3f(tris[i + 1].x, tris[i + 1].y, tris[i + 1].z);
@@ -196,7 +196,7 @@ void Circulo::draw()
 	transformacoes();
 
 	glBegin(GL_TRIANGLE_FAN);
-	glColor3f(1, 1, 1);
+	glColor3f(color.x, color.y, color.z);
 
 	for (i = 0; i < n; i++) {
 		glVertex3f(tris[i].x, tris[i].y, tris[i].z);
@@ -254,7 +254,7 @@ void Plano::draw()
 	transformacoes();
 
 	glBegin(GL_TRIANGLES);
-	glColor3f(1, 1, 1);
+	glColor3f(color.x, color.y, color.z);
 
 	for (int i = 0; i < n; i++)
 	{
@@ -352,7 +352,7 @@ void Caixa::draw(){
 	transformacoes();
 	int n = tris.size();
 	glBegin(GL_TRIANGLE_FAN);
-	glColor3f(1, 1, 1);
+	glColor3f(color.x, color.y, color.z);
 
 	for (int i = 0; i < n; i++) {
 		glVertex3f(tris[i].x, tris[i].y, tris[i].z);
@@ -445,7 +445,7 @@ void Esfera::draw()
 	transformacoes();
 	for (int i = 0; i < n; i += 3) {
 		glBegin(GL_TRIANGLES);
-		glColor3f(1, 0, 0);
+		glColor3f(color.x, color.y, color.z);
 
 		glVertex3f(tris[i].x, tris[i].y, tris[i].z);
 		glVertex3f(tris[i + 1].x, tris[i + 1].y, tris[i + 1].z);
@@ -541,7 +541,7 @@ void Cone::draw()
 	transformacoes();
 
 	glBegin(GL_TRIANGLE_FAN);
-	glColor3f(1, 1, 1);
+	glColor3f(color.x, color.y, color.z);
 	for (i = 0; i <= nlados + 1; i++) {
 		glVertex3f(tris[i].x, tris[i].y, tris[i].z);
 	}
@@ -549,7 +549,7 @@ void Cone::draw()
 
 	for (; i < n;) {
 		glBegin(GL_TRIANGLE_FAN);
-		glColor3f(1, 1, 1);
+		glColor3f(color.x, color.y, color.z);
 		glVertex3f(tris[i].x, tris[i].y, tris[i].z); i++;
 		for (int j = 0; j <= nlados; j++) {
 			glVertex3f(tris[i].x, tris[i].y, tris[i].z); i++;

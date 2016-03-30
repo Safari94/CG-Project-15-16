@@ -296,48 +296,6 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		Formas.push_back(s);
 
 	}
-
-	/**Parser xml extrai nomes de ficheiros que conteem os triângulos das figuras a desenhar*/
-	void readFromXML(string filename)
-	{
-		const char * nomeFich = filename.c_str();
-
-		TiXmlDocument doc(nomeFich);
-		doc.LoadFile();
-		TiXmlHandle docHandle(&doc);
-
-		TiXmlNode * node = docHandle.FirstChild("imagem").ToNode();
-
-		TiXmlElement * element;
-		TiXmlElement * aux;
-
-		element = node->FirstChildElement();
-
-		readGrupoFromXML(element);
-	}
-
-	/**Função que testa se um dado ficheiro possuí extensão .xml*/
-	bool isXML(string filename)
-	{
-		if (regex_match(filename, regex(".+\.xml"))) return true; 
-		else {
-			cout << ERROR_FORMAT_EXCEPTION;
-			return false;
-		}
-	}
-
-	/**Verifica se um dado ficheiro existe na diretoria do projeto*/
-	bool lookUpFile(string filename)
-	{
-		ifstream file(filename);
-		if (file) {
-			return true;
-		}
-		else {
-			cout << ERROR_FILE_NF;
-			return false;
-		}
-	}
 	TiXmlElement * ant;
 	string ficheiro_a_ler;
 	/**Função que faz parse de um nodo <grupo> do ficheiro XML*/
@@ -469,6 +427,49 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		}
 	}
 
+	/**Parser xml extrai nomes de ficheiros que conteem os triângulos das figuras a desenhar*/
+	void readFromXML(string filename)
+	{
+		const char * nomeFich = filename.c_str();
+
+		TiXmlDocument doc(nomeFich);
+		doc.LoadFile();
+		TiXmlHandle docHandle(&doc);
+
+		TiXmlNode * node = docHandle.FirstChild("imagem").ToNode();
+
+		TiXmlElement * element;
+		TiXmlElement * aux;
+
+		element = node->FirstChildElement();
+
+		readGrupoFromXML(element);
+	}
+
+	/**Função que testa se um dado ficheiro possuí extensão .xml*/
+	bool isXML(string filename)
+	{
+		if (regex_match(filename, regex(".+\.xml"))) return true; 
+		else {
+			cout << ERROR_FORMAT_EXCEPTION;
+			return false;
+		}
+	}
+
+	/**Verifica se um dado ficheiro existe na diretoria do projeto*/
+	bool lookUpFile(string filename)
+	{
+		ifstream file(filename);
+		if (file) {
+			return true;
+		}
+		else {
+			cout << ERROR_FILE_NF;
+			return false;
+		}
+	}
+	
+
 	/**Função que prepara as figuras para desenhar a partir de uma fonte .xml e invoca o ciclo glut*/
 	int gerar_figura(vector<string> args)
 	{
@@ -482,35 +483,11 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		try {
 			filename = args.at(1);
 			if (isXML(filename) && lookUpFile(filename)) {
-				printf("carregando dados para gerar figura ...\n");
-				vector<string> files = readFromXML(filename);
-				for (std::vector<string>::iterator it = files.begin(); it != files.end(); ++it) {
-					ifstream f((*it));
-					f >> form;
+				printf("a carregar dados para gerar figura ...\n");
+				readFromXML(filename); // Internamente à leitura geramos os modelos enquanto que na 1ª etapa
+									   // eram gerados nesta mesma função
 
-					Forma* s;
-					if (form.compare(FORMA_PLANO) == 0) {
-						s = new Plano();
-					}
-					else if (form.compare(FORMA_TRIANGULO) == 0) {
-						s = new Triangulo();
-					}
-					else if (form.compare(FORMA_CIRCULO) == 0) {
-						s = new Circulo();
-					}
-					else if (form.compare(FORMA_CAIXA) == 0) {
-						s = new Caixa();
-					}
-					else if (form.compare(FORMA_ESFERA) == 0) {
-						s = new Esfera();
-					}
-					else if (form.compare(FORMA_CONE) == 0) {
-						s = new Cone();
-					}
-					s->readfromFile((*it));
-					Formas.push_back(s);
-				}
-				// Chamada explícita para desenhar cena
+									   // Chamada explícita para desenhar cena
 				prepare_glut();
 			}
 		}
