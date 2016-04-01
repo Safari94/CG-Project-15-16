@@ -1,0 +1,8 @@
+﻿  main.cpp
+c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(127): warning C4005: 'CALLBACK': macro redefinition
+  c:\toolkits\includes\gl\glut.h(34): note: see previous definition of 'CALLBACK'
+c:\users\emanuel\um\3º ano\cg\teste\cg_etapa2\cg_etapa2\main.cpp(399): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\emanuel\um\3º ano\cg\teste\cg_etapa2\cg_etapa2\main.cpp(464): warning C4101: 'aux': unreferenced local variable
+c:\users\emanuel\um\3º ano\cg\teste\cg_etapa2\cg_etapa2\main.cpp(474): warning C4129: '.': unrecognized character escape sequence
+c:\users\emanuel\um\3º ano\cg\teste\cg_etapa2\cg_etapa2\main.cpp(663): warning C4715: 'interpretar': not all control paths return a value
+msvcprtd.lib(MSVCP140D.dll) : fatal error LNK1112: module machine type 'X86' conflicts with target machine type 'x64'

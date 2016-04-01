@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<imagem>
+	
+	<grupo prof="1">
+	<modelos>
+			<modelo ficheiro="fundo.3d" colorX="1.0" colorY="1.0" colorZ="1.0" />
+	</modelos>
+
+<!-- Sol -->
+	<grupo prof="2">
+		<escala X="1" Y="1" Z="1" />	
+		<modelos>
+			<modelo ficheiro="sol.3d" colorX="1.0" colorY="1.0" colorZ="0.0" />
+		</modelos>
+	
+	
+	<!-- Mercúrio -->
+			<grupo prof="3">
+				<escala X="1" Y="1" Z="1" />
+				<translacao X="30" Y="0.0" Z="0"/>	
+				<rotacao angulo="10" eixoX="0" eixoY="1" eixoZ="0" />
+				<modelos>
+					<modelo ficheiro="mercurio.3d" colorX="0.752941" colorY="0.752941" colorZ="0.752941" />
+				</modelos>
+			</grupo>
+
+	<!-- Venus -->
+			<grupo prof="3">
+				<escala X="1" Y="1" Z="1" />
+				<translacao X="45" Y="0" Z="0"/>			
+				<rotacao angulo="10" eixoX="0" eixoY="1" eixoZ="0" />
+				<modelos>
+					<modelo ficheiro="venus.3d" colorX="1.0" colorY="0.5" colorZ="0.0" />
+				</modelos>
+			</grupo>
+
+	<!-- Terra e Lua -->
+			<grupo prof="3">
+				<escala X="1" Y="1" Z="1" />
+				<translacao X="60" Y="0" Z="0" />						
+				<rotacao angulo="10" eixoX="0" eixoY="1" eixoZ="0" />
+				<modelos>
+					<modelo ficheiro="terra.3d" colorX="0.0" colorY="0.0" colorZ="1.0" />
+				</modelos>
+					<grupo prof="4">
+						<escala X="1" Y="1" Z="1" />
+						<translacao X="3" Y="3" Z="0"/>
+						<rotacao angulo="10" eixoX="0" eixoY="1" eixoZ="0" />
+						<modelos>
+						<modelo ficheiro="lua.3d" colorX="0.752941" colorY="0.752941" colorZ="0.752941" />
+					</modelos>
+					</grupo>
+			</grupo>
+
+	<!-- Marte -->
+			<grupo prof="3">
+				<escala X="1" Y="1" Z="1" />
+				<translacao X="70" Y="0" Z="0"/>
+				<rotacao angulo="10" eixoX="0" eixoY="1" eixoZ="0" />
+				<modelos>
+					<modelo ficheiro="marte.3d" colorX="1.0" colorY="0.0" colorZ="0.0" />
+				</modelos>
+			</grupo>
+
+	<!-- Júpiter -->
+			<grupo prof="3">
+				<escala X="1" Y="1" Z="1" />
+				<translacao X="120" Y="0" Z="0" />
+				<rotacao angulo="10" eixoX="0" eixoY="1" eixoZ="0" />
+				<modelos>
+					<modelo ficheiro="jupiter.3d" colorX="0.752941" colorY="0.45" colorZ="0.0" />
+				</modelos>
+			</grupo>
+
+	<!-- Saturno -->
+			<grupo prof="3">
+				<escala X="1" Y="1" Z="1" />
+				<translacao X="155" Y="0" Z="0" />
+				<rotacao angulo="10" eixoX="0" eixoY="1" eixoZ="0" />
+				<modelos>
+					<modelo ficheiro="saturno.3d" colorX="0.752941" colorY="0.6" colorZ="0.0" />
+				</modelos>
+			</grupo>
+
+	<!-- Urano -->
+			<grupo prof="3">
+				<escala X="1" Y="1" Z="1" />
+				<translacao X="170" Y="0" Z="0" />
+				<rotacao angulo="10" eixoX="0" eixoY="1" eixoZ="0" />
+				<modelos>
+					<modelo ficheiro="urano.3d" colorX="0.5" colorY="0.5" colorZ="1.0" />
+				</modelos>
+			</grupo>
+
+	<!-- Neptuno -->
+			<grupo prof="3">
+				<escala X="1" Y="1" Z="1" />
+				<translacao X="215" Y="0" Z="0" />
+				<rotacao angulo="10" eixoX="0" eixoY="1" eixoZ="0" />
+				<modelos>
+					<modelo ficheiro="neptuno.3d" colorX="0.0" colorY="0.0" colorZ="0.6" />
+				</modelos>
+			</grupo>
+		</grupo>
+	</grupo>
+</imagem>

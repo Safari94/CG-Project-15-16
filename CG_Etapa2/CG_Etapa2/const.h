@@ -29,6 +29,7 @@
 #define ERROR_FILE_NF "error: ficheiro nao existe.\n\n"
 #define ERROR_FORMAT_EXCEPTION "error: formato inesperado.\n\n"
 #define MESSAGE_HELP "-Manual-\n[exit]: sair do builder3D\n\n[gerador] opcoes:\n\t[pln largura comprimento fich]\n\t[tri lado fich]\n\t[circ raio nlados fich]\n\t[caixa largura comprimento altura fich]\n\t[esfera raio ncamadas nfatias fich]\n\t[cone altura raio nlados ncamadas fich]\n\n[desenhar fich.xml]: desenhar a figura (apenas fich extensao .xml)\n\n[help]: consultar o manual\n\n"
+#define MESSAGE_GENERATE_SS "Esferas.3d para o modelo do sistema solar criadas"
 
 // Nomes dos Formas
 #define FORMA_TRIANGULO "TRIANGULO"

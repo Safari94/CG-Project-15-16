@@ -10,6 +10,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+
 vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos da figura a desenhar
 
 						   //Variaveis uteis para o controlo da camara
@@ -22,6 +23,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 	float x_tela, y_tela; //Variaveis para guardar posição da tela em que se carrega no rato
 	float raio = 10, cam_h = 0, cam_v = 0.5, camh_x = 0, camh_y = 0;
 	int estado_botao = 0;
+	float olhar[] = { 0,0,0 };
 
 	// Variáveis auxiliares para leitura de ficheiros XML e povoamento das estruturas de dados
 	vector<TransformsWrapper> transforms_atual;
@@ -33,8 +35,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 	{
 		string p;
 		vector<string> planetas;
-
-		p = "gerador rec 512 512 plano.3d"; planetas.push_back(p);
+		p = "gerador esfera 512 100 100 fundo.3d"; planetas.push_back(p);
 		p = "gerador esfera 17 30 30 sol.3d"; planetas.push_back(p);
 		p = "gerador esfera 1.5 30 30 mercurio.3d"; planetas.push_back(p);
 		p = "gerador esfera 1.9 30 30 venus.3d"; planetas.push_back(p);
@@ -48,6 +49,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 
 		return planetas;
 	}
+
 
 
 	void changeSize(int w, int h) {
@@ -91,8 +93,8 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		
 
 		//Câmera em modo explorador
-		gluLookAt(raio*sin(cam_h + camh_x)*cos(cam_v + camh_y), raio*sin(cam_v + camh_y), raio*cos(cam_h + camh_x)*cos(cam_v + camh_y),
-			0.0, 0.0, 0.0,
+		gluLookAt(olhar[0]+raio*sin(cam_h + camh_x)*cos(cam_v + camh_y),olhar[1] +raio*sin(cam_v + camh_y),olhar[2]+ raio*cos(cam_h + camh_x)*cos(cam_v + camh_y),
+			olhar[0], olhar[1], olhar[2],
 			0.0f, 1.0f, 0.0f);
 
 		glEnable(GL_CULL_FACE);
@@ -111,22 +113,22 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 	{
 		switch (key) {
 		case 'a':
-			alpha -= 0.1; // Move left
+			olhar[0] -= 5; // Move left
 			break;
 		case 'd':
-			alpha += 0.1; // Move right
+			olhar[0] += 5; // Move right
 			break;
 		case 'w':
-			if (beta < (M_PI / 2) - 0.1) beta += 0.1; // move up
+			olhar[1] += 5; // move up
 			break;
 		case 'x':
-			if (beta > -(M_PI / 2) + 0.1) beta -= 0.1; // move down
+			 olhar[1] -= 5; // move down
 			break;
 		case'e': // Menos zoom
-			if (raio>0) raio -= 0.4;
+			if (raio>0) raio -= 5;
 			break;
 		case 'r': // Mais zoom
-			raio += 0.4;
+			raio += 5;
 			break;
 		default:
 			break;
@@ -158,7 +160,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 				camh_x = (x_tela - x)*0.007;
 
 			if (y_tela != y) {
-				teste = (y_tela - y)*0.01;
+				teste = (y_tela - y)*0.007;
 				if (teste + cam_v>-M_PI_2 && teste + cam_v<M_PI_2)
 					camh_y = teste;
 			}
@@ -186,6 +188,31 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		glutPostRedisplay();
 	}
 
+	void specialKeyboard(int op, int x, int y) {
+		switch (op) {
+		case GLUT_KEY_UP:
+			if (cam_v + 0.05<M_PI_2)   //Para câmera não virar ao contrário
+				cam_v += 0.05;
+			break;
+		case GLUT_KEY_DOWN:
+			if (cam_v - 0.05>-M_PI_2)  //Para câmera não virar ao contrário
+				cam_v -= 0.05;
+			break;
+
+		case GLUT_KEY_LEFT:
+			cam_h -= 0.05;
+			break;
+		case GLUT_KEY_RIGHT:
+			cam_h += 0.05;
+			break;
+
+		default:
+			break;
+
+		}
+		glutPostRedisplay();
+	}
+
 	/**Função que constrói o menu*/
 	void menu()
 	{
@@ -207,7 +234,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		pz = 6.0;
 		alpha = 0.5;
 		beta = (M_PI / 3);
-		raio = 2;
+		raio = 180;
 	}
 
 
@@ -241,6 +268,8 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		glutKeyboardFunc(teclado1);
 		glutMouseFunc(rato);
 		glutMotionFunc(mov_rato);
+		glutSpecialFunc(specialKeyboard);
+		
 
 		// Criação do menu
 		menu();
@@ -617,6 +646,21 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		}
 		else if (playerInfoVector.at(0).compare("exit") == 0 && cont != 0) {
 			return 0;
+		}
+		else if (playerInfoVector.at(0).compare("gerar_sistema") == 0 && cont != 0) {
+			vector<string> planetas;
+			planetas = sistemaSolarEst();
+
+			for (auto &planeta : planetas) {
+				string buf; // Have a buffer string
+				stringstream ss(planeta); // Insert the string into a stream
+				vector<string> tokens; // Create vector to hold our words
+				while (ss >> buf)
+					tokens.push_back(buf);
+				gerador(tokens);
+			}
+
+			cout << MESSAGE_GENERATE_SS;
 		}
 		else {
 			// Como o comando invocado não é nenhum dos anteriores, devolve o erro correspondente
