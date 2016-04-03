@@ -3,7 +3,7 @@
 	
 	<grupo prof="1">
 	<modelos>
-			<modelo ficheiro="fundo.3d" colorX="1.0" colorY="1.0" colorZ="1.0" />
+			<modelo ficheiro="fundo.3d" colorX="0.0" colorY="0.0" colorZ="0.0" />
 	</modelos>
 
 <!-- Sol -->

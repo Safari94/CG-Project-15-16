@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<imagem>
+	<grupo prof="1">
+		<translacao X="20" Y="0" Z="0" />
+		<rotacao angulo="60" eixoX="1" eixoY="0" eixoZ="1" />
+		<modelos>
+			<modelo ficheiro="caixa.3d" colorX="1" colorY="0" colorZ="1" />
+		</modelos>
+		<grupo prof="2">
+			<translacao X="-20" Y="0" Z="0" />
+			<modelos>
+				<modelo ficheiro="cone.3d" colorX="1" colorY="0" colorZ="1" />
+			</modelos>
+		</grupo>
+		<grupo prof="-1">
+		</grupo>
+	</grupo>
+</imagem>

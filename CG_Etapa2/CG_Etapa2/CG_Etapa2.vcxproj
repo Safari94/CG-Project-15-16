@@ -86,8 +86,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\toolkits\includes\GL</IncludePath>
-    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;C:\toolkits\libs</LibraryPath>
+    <IncludePath>C:\Users\Xavier\Documents\CG\P1\glut-3.7.6-bin\glut-3.7.6-bin\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\toolkits\includes\GL</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;C:\toolkits\libs;C:\Users\Xavier\Documents\CG\P1\glut-3.7.6-bin\glut-3.7.6-bin\libs</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>

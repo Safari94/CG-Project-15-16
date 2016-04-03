@@ -1,7 +1,9 @@
 ﻿  main.cpp
-c:\users\emanuel\um\3º ano\cg\teste\cg_etapa2\cg_etapa2\main.cpp(420): warning C4018: '<': signed/unsigned mismatch
-c:\users\emanuel\um\3º ano\cg\teste\cg_etapa2\cg_etapa2\main.cpp(431): warning C4018: '<': signed/unsigned mismatch
-c:\users\emanuel\um\3º ano\cg\teste\cg_etapa2\cg_etapa2\main.cpp(471): warning C4101: 'aux': unreferenced local variable
-c:\users\emanuel\um\3º ano\cg\teste\cg_etapa2\cg_etapa2\main.cpp(481): warning C4129: '.': unrecognized character escape sequence
-c:\users\emanuel\um\3º ano\cg\teste\cg_etapa2\cg_etapa2\main.cpp(670): warning C4715: 'interpretar': not all control paths return a value
-  CG_Etapa2.vcxproj -> C:\Users\Emanuel\UM\3º ano\CG\teste\CG_Etapa2\Debug\CG_Etapa2.exe
+c:\users\xavier\documents\cg\cg-project-15-16\cg_etapa2\cg_etapa2\main.cpp(420): warning C4018: '<': signed/unsigned mismatch
+c:\users\xavier\documents\cg\cg-project-15-16\cg_etapa2\cg_etapa2\main.cpp(431): warning C4018: '<': signed/unsigned mismatch
+c:\users\xavier\documents\cg\cg-project-15-16\cg_etapa2\cg_etapa2\main.cpp(471): warning C4101: 'aux': unreferenced local variable
+c:\users\xavier\documents\cg\cg-project-15-16\cg_etapa2\cg_etapa2\main.cpp(481): warning C4129: '.': unrecognized character escape sequence
+  forma.cpp
+  Generating Code...
+c:\users\xavier\documents\cg\cg-project-15-16\cg_etapa2\cg_etapa2\main.cpp(670): warning C4715: 'interpretar': not all control paths return a value
+  CG_Etapa2.vcxproj -> C:\Users\Xavier\Documents\CG\CG-Project-15-16\CG_Etapa2\Debug\CG_Etapa2.exe
