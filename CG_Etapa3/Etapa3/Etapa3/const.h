@@ -1,7 +1,7 @@
 /*
 *
 *Autores : Miguel Guimarães, Miguel Rodrigues, Xavier Rodrigues, Emanuel Fernandes
-*Data : 2016 - 03 - 01
+*Data : 2016 - 04 - 25
 *
 */
 
@@ -10,13 +10,24 @@
 
 #include "forma.h" // Libraria que contêm ferramentas que geram e desenham figuras
 
+##include "Plano.h"
+#include "Caixa.h"
+#include "Cone.h"
+#include "Esfera.h"
+#include "Circulo.h"
+#include "Triangulo.h"
 #include <iostream>
 #include <fstream>
+#include <glew.h>
 #include <glut.h>
 #include <math.h>
 #include <vector>
 #include <sstream>
 #include <regex>
+
+#include <il.h>
+#include <ilu.h>
+
 #include <windows.h>
 
 #include "tinyxml.h"
@@ -39,8 +50,18 @@
 #define FORMA_ESFERA "ESFERA"
 #define FORMA_CONE "CONE"
 
-// Constantes matemáticas
-# define M_PI 3.14159265358979323846 /*Pi*/
+// Constantes de transformações geometricas
+#define TRANSLATE "TRASNLATE"
+#define ROTATE "ROTATE"
+#define SCALE "SCALE"
+
+// Algumas librarias com funcionalidades extras
+#pragma comment(lib, "devil.lib")
+#pragma comment(lib, "glew32.lib")
+
+// Constantes matematicas
+#define M_PI 3.14159265358979323846 /*Pi*/
+#define M_PI_2 1.57079632679489661923132169163975144 /*Pi/2*/
 
 using namespace std;
 

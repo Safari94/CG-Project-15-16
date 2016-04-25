@@ -10,6 +10,14 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+Forma* ff;
+Cone* cone;
+Plano* p;
+Triangulo* t;
+Circulo* cir;
+Caixa* c;
+Esfera* ef;
+
 
 vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos da figura a desenhar
 
@@ -29,6 +37,11 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 	vector<TransformsWrapper> transforms_atual;
 	vector<Grupo> grupos;
 	Ponto3D color;
+
+	// Frames
+	int frame = 0;
+	int timebase = 0;
+
 
 	/**Função que gera automaticamente ficheiros com os palentas do modelo estático do sistema solar */
 		vector<string> sistemaSolarEst()
@@ -82,6 +95,9 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 	/**Desenha a cena (esqueleto openGL)*/
 	void renderScene(void)
 	{
+		float fps;
+		int time;
+		char s[64];
 		// Limpar buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -101,9 +117,18 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		glPolygonMode(GL_FRONT_AND_BACK, opcao);
 
 		// Loop para desenhar formas
-		for (std::vector<Forma*>::iterator it = Formas.begin(); it != Formas.end(); ++it) {
-			(*it)->draw();
-		}
+		t->drawVBO();
+
+		//  janela com as frames
+		frame++;
+		time = glutGet(GLUT_ELAPSED_TIME);
+		if (time - timebase > 1000) {
+			fps = frame*1000.0 / (time - timebase);
+			timebase = time;
+			frame = 0;
+			sprintf(s, "FPS: %f6.2", fps);
+			glutSetWindowTitle(s);
+	}
 
 		glutSwapBuffers();
 	}
@@ -277,6 +302,11 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		// Settings OpenGL
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_CULL_FACE);
+
+		t = new Triangulo();
+		t->gerarTriangulo(100, "cone.3d");
+		t->criarVBO("cone.3d");
+		t->carregarImagem();
 
 		printf("end.\n\n");
 		// Entrar no ciclo do GLUT

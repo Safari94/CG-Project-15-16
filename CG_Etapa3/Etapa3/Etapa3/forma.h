@@ -13,6 +13,8 @@
 
 using namespace std;
 
+void iniciar(int nformas);
+
 class Ponto3D
 {
 public:
@@ -25,16 +27,19 @@ public:
 class Rotacao : public Ponto3D {
 public:
 	Rotacao();
+	float tempo;
+	float timebase;
 	float ang;
 	void printRotacao() const; 
+	void rodar();
 };
 
 class Translacao{
 public:
 	Ponto3D fst; // valores para efetuar o primeiro translate
-	float time; // tempo que demorara essa tranalsaçao
-	float p;
-	float tb;
+	float tempo; // tempo que demorara essa tranalsaçao
+	float b;
+	float timebase;
 	vetor<Ponto3D> pts;
 	void printTranslacao();
 	void translacao();
@@ -55,7 +60,7 @@ public:
 			rotacao.printRotacao();
 		}
 		else if (nome == "TRANSLATE") {
-			translacao.print();
+			translacao.printTranslacao();
 		}
 	}
 };
@@ -90,6 +95,7 @@ public:
 	virtual void draw() = 0;
 	void setTransformacoes(vector<TransformsWrapper> ts);
 	void transformacoes();
+	void printTransformacoes();
 	virtual void writetoFile(string filename) = 0;
 	void desenharTransformacoes();
 	void desenhar_curva();
