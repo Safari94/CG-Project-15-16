@@ -304,7 +304,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		glEnable(GL_CULL_FACE);
 
 		t = new Triangulo();
-		t->gerarTriangulo(100, "cone.3d");
+		t->geraTriangulo(100, "cone.3d");
 		t->criarVBO("cone.3d");
 		t->carregarImagem();
 

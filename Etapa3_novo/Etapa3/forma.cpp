@@ -15,8 +15,8 @@
 #include <math.h>
 #include <iostream>
 #include <sstream>
-#include <IL/il.h>
-#include <IL/ilu.h>
+#include <il.h>
+#include <ilu.h>
 
 using namespace std;
 

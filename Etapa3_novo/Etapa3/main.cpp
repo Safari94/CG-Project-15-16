@@ -116,14 +116,10 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		glEnable(GL_CULL_FACE);
 		glPolygonMode(GL_FRONT_AND_BACK, opcao);
 
-		// Loop para desenhar formas
-		for (std::vector<Forma*>::iterator it = Formas.begin(); it != Formas.end(); ++it) {
-			(*it)->criarVBO("sol.3d");
-			//t = new Triangulo();
-			//t->geraTriangulo(100, "sol.3d");
-			//t->criarVBO("sol.3d");
-			//t->carregarImagem();
-		}
+		t->desenharVBO();
+	
+			
+		
 
 		//ef->desenharVBO();
 
@@ -310,12 +306,12 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		// Settings OpenGL
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_CULL_FACE);
-		/*
+		
 		t = new Triangulo();
 		t->geraTriangulo(100, "cone.3d");
 		t->criarVBO("cone.3d");
 		t->carregarImagem();
-*/
+
 		printf("end.\n\n");
 		// Entrar no ciclo do GLUT
 		glutMainLoop();

@@ -25,8 +25,8 @@
 #include <sstream>
 #include <regex>
 
-#include <IL/il.h>
-#include <IL/ilu.h>
+#include <il.h>
+#include <ilu.h>
 
 #include <windows.h>
 
