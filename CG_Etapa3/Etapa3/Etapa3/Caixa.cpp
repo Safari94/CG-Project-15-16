@@ -1,5 +1,6 @@
 #include "Caixa.h"
 #include "const.h"
+#include "forma.h"
 
 using namespace std;
 

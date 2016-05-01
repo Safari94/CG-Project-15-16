@@ -10,13 +10,15 @@
 class Esfera : public Forma
 {
 public:
-	Esfera();
+	Esfera() {};
 	float r;
 	float n;
 	float f;
 	void geraEsfera(float raio, float niveis, float fatias, string filename);
 	void draw();
 	void writetoFile(string filename);
+	void desenharVBO() override;
+	void criarVBO(string filename) override;
 };
 
 #endif

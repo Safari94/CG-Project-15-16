@@ -10,7 +10,7 @@
 
 #include "forma.h" // Libraria que contêm ferramentas que geram e desenham figuras
 
-##include "Plano.h"
+#include "Plano.h"
 #include "Caixa.h"
 #include "Cone.h"
 #include "Esfera.h"

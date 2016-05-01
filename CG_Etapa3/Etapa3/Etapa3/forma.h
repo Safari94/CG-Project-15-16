@@ -4,7 +4,7 @@
 *Data : 2016 - 03 - 29
 *
 */
-
+#include "const.h"
 #ifndef _formas_h_included_
 #define _formas_h_included_
 
@@ -19,6 +19,10 @@ class Ponto3D
 {
 public:
 	Ponto3D();
+	Ponto3D(float xx, float yy, float zz)
+	{
+	x = xx; y = yy; z = zz;
+	}
 	float x, y, z;
 	void print() const;
 	string toString();
@@ -34,14 +38,14 @@ public:
 	void rodar();
 };
 
-class Translacao{
+class Translacao : public Ponto3D {
 public:
 	Ponto3D fst; // valores para efetuar o primeiro translate
 	float tempo; // tempo que demorara essa tranalsaçao
 	float b;
 	float timebase;
-	vetor<Ponto3D> pts;
-	void printTranslacao();
+	vector<Ponto3D> pontos;
+	void printTranslacao() const;
 	void translacao();
 
 };
@@ -78,26 +82,26 @@ public:
 class Forma
 {
 protected:
-	virtual ~Forma() {};
+	string nome;
 	vector<Ponto3D> tris;  // vetor de triangulos da forma
 	vector<TransformsWrapper> transforms; // Rotações e Translações
 public:
-	GLuint buffers[3];
-	GLuint vertexCount;
+	GLuint buffers[3],vertexCount;
 	int *aIndex;
 	unsigned int textura ;
 	string astro;
 
 public:
+	virtual ~Forma() {};
 	Ponto3D color; // Cor da forma
-	string nome;
+	
 	virtual void readfromFile(string filename);
 	virtual void draw() = 0;
 	void setTransformacoes(vector<TransformsWrapper> ts);
 	void transformacoes();
-	void printTransformacoes();
+	void printTransformacoes() const;
 	virtual void writetoFile(string filename) = 0;
-	void desenharTransformacoes();
+	
 	void desenhar_curva();
 	virtual void criarVBO(string filename);
 	virtual void desenharVBO();

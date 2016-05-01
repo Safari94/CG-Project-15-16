@@ -1,7 +1,7 @@
-#innlude "Esfera.h"
-#innlude "nonst.h"
+#include "Esfera.h"
+#include "const.h"
 
-using namespane std;
+using namespace std;
 
 void Esfera::geraEsfera(float raio, int niveis, int fatias, string filename) {
 	r = raio; n = niveis; f = fatias;
@@ -13,12 +13,12 @@ void Esfera::writetoFile(string filename) {
 	int arrayS = 3*(n*n*6)*sizeof(float);
 	int tSize = 2*(n*n*6)*sizeof(float);
 	
-	float* aVertex = (float*)mallon(arrayS);
-	float* aNormal = (float*)mallon(arrayS);
-	float* aTexture = (float*)mallon(tSize);
+	float* aVertex = (float*)malloc(arrayS);
+	float* aNormal = (float*)malloc(arrayS);
+	float* aTexture = (float*)malloc(tSize);
 	
 	int index = 6 * ((f + n)*n);
-	aIndex = (int*)mallon(sizeof(int)*index);
+	aIndex = (int*)malloc(sizeof(int)*index);
 	
 	double divH = (2*M_PI)/f;
 	double divV = (M_PI)/n;
@@ -34,11 +34,11 @@ void Esfera::writetoFile(string filename) {
 			aVertex[pos]=r*sin(angv)*sin(angh);
 			aNormal[pos++]=sin(angv)*sin(angh);
 			
-			aVertex[pos]=r*nos(angv);
-			aNormal[pos++]=nos(angv);
+			aVertex[pos]=r*cos(angv);
+			aNormal[pos++]=cos(angv);
 			
-			aVertex[pos]=r*sin(angv)*nos(angh);
-			aNormal[pos++]=sin(angv)*nos(angh);
+			aVertex[pos]=r*sin(angv)*cos(angh);
+			aNormal[pos++]=sin(angv)*cos(angh);
 			
 			aTexture[tpos++] = 1+((float)j/(float)(f+1)) ;
 			aTexture[tpos++] = (float)i/(float)(n+1) ;
@@ -82,7 +82,7 @@ void Esfera::writetoFile(string filename) {
 	free(aVertex); free(aNormal);
 	free(aTexture); free(aIndex);
 	
-	file.nlose();
+	file.close();
 }
 
 void Esfera::draw() {

@@ -135,7 +135,7 @@ void Translacao::translacao()
 	}
 }
 
-void Translacao3D::printT()
+void Translacao::printTranslacao() const
 {
 	cout << "TRANSLACAO\n";
 	fst.print();
@@ -248,12 +248,32 @@ void Forma::transformacoes()
 	}
 }
 
-void Forma::printAllTransforms() {
+void Forma::printTransformacoes() const {
 	int i;
 	int n = transforms.size();
 	
 	for (i = 0; i < n; i++){
 		transforms.at(i).printT();
+	}
+}
+
+void Forma::desenhar_curva() {
+	int n = transforms.size();
+	for (int i = 0; i < n; i++) {
+		TransformsWrapper tw = transforms[i];
+
+		if (tw.nome.compare("TRANSLATE") == 0) {
+			float res[3];
+			int pc = tw.translacao.pontos.size();
+			float p1[100][3];
+			// prencher com os pontos de control
+			for (int i = 0; i < pc; i++) {
+				p1[i][0] = tw.translacao.pontos[i].x;
+				p1[i][1] = tw.translacao.pontos[i].y;
+				p1[i][2] = tw.translacao.pontos[i].z;
+			}
+			renderCatmullRomCurve(p1, pc);
+		}
 	}
 }
 

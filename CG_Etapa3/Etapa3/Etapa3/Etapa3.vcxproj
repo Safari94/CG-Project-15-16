@@ -146,6 +146,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Caixa.cpp" />
+    <ClCompile Include="Circulo.cpp" />
+    <ClCompile Include="Cone.cpp" />
+    <ClCompile Include="Esfera.cpp" />
+    <ClCompile Include="forma.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Plano.cpp" />
+    <ClCompile Include="tinystr.cpp" />
+    <ClCompile Include="tinyxml.cpp" />
+    <ClCompile Include="tinyxmlerror.cpp" />
+    <ClCompile Include="tinyxmlparser.cpp" />
+    <ClCompile Include="Triangulo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Caixa.h" />
+    <ClInclude Include="Circulo.h" />
+    <ClInclude Include="Cone.h" />
+    <ClInclude Include="const.h" />
+    <ClInclude Include="Esfera.h" />
+    <ClInclude Include="forma.h" />
+    <ClInclude Include="Plano.h" />
+    <ClInclude Include="tinystr.h" />
+    <ClInclude Include="tinyxml.h" />
+    <ClInclude Include="Triangulo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

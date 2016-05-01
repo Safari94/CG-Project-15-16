@@ -10,7 +10,7 @@
 class Caixa : public Forma
 {
 public:
-	Caixa();
+	Caixa(){};
 	float c, l, a;
 	void geraCaixa(float comprimento, float largura, float altura, string filename);
 	void draw();

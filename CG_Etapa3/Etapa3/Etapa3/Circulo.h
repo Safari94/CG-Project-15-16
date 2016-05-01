@@ -7,12 +7,13 @@
 class Circulo : public Forma
 {
 public:
-	Circulo();
+	Circulo(){};
 	int lados;
 	float raio;
 	void geraCirculo(float raio, int lados, string filename);
 	void writetoFile(string filename);
 	void draw();
+	virtual void desenharVBO() override;
 };
 
 #endif

@@ -117,7 +117,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 		glPolygonMode(GL_FRONT_AND_BACK, opcao);
 
 		// Loop para desenhar formas
-		t->drawVBO();
+		t->desenharVBO();
 
 		//  janela com as frames
 		frame++;
@@ -126,7 +126,7 @@ vector<Forma*> Formas; // Vector de apontadores para armazenamentos dos modelos 
 			fps = frame*1000.0 / (time - timebase);
 			timebase = time;
 			frame = 0;
-			sprintf(s, "FPS: %f6.2", fps);
+			sprintf_s(s, "FPS: %f6.2", fps);
 			glutSetWindowTitle(s);
 	}
 

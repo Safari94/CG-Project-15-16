@@ -1,11 +1,12 @@
 #include "Cone.h"
 #include "const.h"
+#include "forma.h"
 
 using namespace std;
 
 void Cone::geraCone(float altura, float raio, int nlados, int ncamadas, string filename) {
-	this->raio = raio; this->altura = altura;
-	this->ncamadas = ncamadas; this->nlados = nlados;
+	raio = raio; altura = altura;
+	ncamadas = ncamadas; nlados = nlados;
 	writetoFile(filename);
 }
 
