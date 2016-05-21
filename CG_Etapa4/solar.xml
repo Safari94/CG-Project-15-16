@@ -1,0 +1,464 @@
+<imagem>
+  <grupo prof="1">
+      <grupo prof="2">
+          <rotacao tempo="15" angulo="360" eixoX="0" eixoY="1" eixoZ="0" />
+          <modelos>
+              <modelo ficheiro="sol.3d" colorX="1" colorY="1" colorZ="0" />
+          </modelos>
+      </grupo>
+      <grupo prof="3">
+          <translacao tempo="12.89">
+                <ponto X="-42" Y="0" Z="0"/>
+                <ponto X="-39.94" Y="0" Z="-9.27"/>
+                <ponto X="-33.97" Y="0" Z="-17.63"/>
+                <ponto X="-26.77" Y="0" Z="-23.11"/>
+                <ponto X="-17.88" Y="0" Z="-27.14"/>
+                <ponto X="-10.44" Y="0" Z="-29.05"/>
+                <ponto X="0" Y="0" Z="-30"/>
+                <ponto X="10.44" Y="0" Z="-29.05"/>
+                <ponto X="17.48" Y="0" Z="-27.14"/>
+                <ponto X="26.77" Y="0" Z="-23.11"/>
+                <ponto X="33.97" Y="0" Z="-17.63"/>
+                <ponto X="39.94" Y="0" Z="-9.27"/>
+                <ponto X="42" Y="0" Z="0"/>
+                <ponto X="39.94" Y="0" Z="9.27"/>
+                <ponto X="33.97" Y="0" Z="17.63"/>
+                <ponto X="26.77" Y="0" Z="23.11"/>
+                <ponto X="17.88" Y="0" Z="27.14"/>
+                <ponto X="10.44" Y="0" Z="29.05"/>
+                <ponto X="0" Y="0" Z="30"/>
+                <ponto X="-10.44" Y="0" Z="29.05"/>
+                <ponto X="-17.48" Y="0" Z="27.14"/>
+                <ponto X="-26.77" Y="0" Z="23.11"/>
+                <ponto X="-33.97" Y="0" Z="17.63"/>
+                <ponto X="-39.94" Y="0" Z="9.27"/>
+          </translacao>
+          <rotacao tempo="52.30" angulo="360" eixoX="0" eixoY="1" eixoZ="0" />
+          <modelos>
+              <modelo ficheiro="mercurio.3d" colorX="0.752941" colorY="0.752941" colorZ="0.752941" />
+          </modelos>
+      </grupo>
+      <grupo prof="3">
+          <translacao tempo="15.61">
+                <ponto X="-49" Y="0" Z="0"/>
+                <ponto X="-48.13" Y="0" Z="-6.93"/>
+                <ponto X="-45.55" Y="0" Z="-13.62"/>
+                <ponto X="-39.64" Y="0" Z="-21.74"/>
+                <ponto X="-33.54" Y="0" Z="-26.97"/>
+                <ponto X="-23.60" Y="0" Z="-32.42"/>
+                <ponto X="-15.14" Y="0" Z="-35.18"/>
+                <ponto X="-6.14" Y="0" Z="-36.60"/>
+                <ponto X="0" Y="0" Z="-37"/>
+                <ponto X="6.14" Y="0" Z="-36.60"/>
+                <ponto X="15.14" Y="0" Z="-35.18"/>
+                <ponto X="23.60" Y="0" Z="-32.42"/>
+                <ponto X="33.54" Y="0" Z="-26.97"/>
+                <ponto X="39.64" Y="0" Z="-21.74"/>
+                <ponto X="45.55" Y="0" Z="-13.62"/>
+                <ponto X="48.13" Y="0" Z="-6.93"/>
+                <ponto X="49" Y="0" Z="0"/>
+                <ponto X="48.13" Y="0" Z="6.93"/>
+                <ponto X="45.55" Y="0" Z="13.62"/>
+                <ponto X="39.64" Y="0" Z="21.74"/>
+                <ponto X="33.54" Y="0" Z="26.97"/>
+                <ponto X="23.60" Y="0" Z="32.42"/>
+                <ponto X="15.14" Y="0" Z="35.18"/>
+                <ponto X="6.14" Y="0" Z="36.60"/>
+                <ponto X="0" Y="0" Z="37"/>
+                <ponto X="-6.14" Y="0" Z="36.60"/>
+                <ponto X="-15.14" Y="0" Z="35.18"/>
+                <ponto X="-23.60" Y="0" Z="32.42"/>
+                <ponto X="-33.54" Y="0" Z="26.97"/>
+                <ponto X="-39.64" Y="0" Z="21.74"/>
+                <ponto X="-45.55" Y="0" Z="13.62"/>
+                <ponto X="-48.13" Y="0" Z="6.93"/>
+          </translacao>
+          <rotacao tempo="62.55" angulo="360" eixoX="0" eixoY="1" eixoZ="0" />
+          <modelos>
+              <modelo ficheiro="venus.3d" colorX="0.73" colorY="0.73" colorZ="0" />
+          </modelos>
+      </grupo>
+       <grupo prof="3">
+          <translacao tempo="17.02">
+                <ponto X="-57" Y="0" Z="0"/>
+                <ponto X="-55.20" Y="0" Z="-11.19"/>
+                <ponto X="-49.94" Y="0" Z="-21.67"/>
+                <ponto X="-41.55" Y="0" Z="-30.80"/>
+                <ponto X="-33.50" Y="0" Z="-36.40"/>
+                <ponto X="-24.26" Y="0" Z="-40.71"/>
+                <ponto X="-17.61" Y="0" Z="-42.79"/>
+                <ponto X="-10.68" Y="0" Z="-44.20"/>
+                <ponto X="-3.57" Y="0" Z="-44.91"/>
+                <ponto X="0" Y="0" Z="-45"/>
+                <ponto X="3.57" Y="0" Z="-44.91"/>
+                <ponto X="10.68" Y="0" Z="-44.20"/>
+                <ponto X="17.61" Y="0" Z="-42.79"/>
+                <ponto X="24.26" Y="0" Z="-40.71"/>
+                <ponto X="33.50" Y="0" Z="-36.40"/>
+                <ponto X="41.55" Y="0" Z="-30.80"/>
+                <ponto X="49.94" Y="0" Z="-21.67"/>
+                <ponto X="55.20" Y="0" Z="-11.19"/>
+                <ponto X="57" Y="0" Z="0"/>
+                <ponto X="55.20" Y="0" Z="11.19"/>
+                <ponto X="49.94" Y="0" Z="21.67"/>
+                <ponto X="41.55" Y="0" Z="30.80"/>
+                <ponto X="33.50" Y="0" Z="36.40"/>
+                <ponto X="24.26" Y="0" Z="40.71"/>
+                <ponto X="17.61" Y="0" Z="42.79"/>
+                <ponto X="10.68" Y="0" Z="44.20"/>
+                <ponto X="3.57" Y="0" Z="44.91"/>
+                <ponto X="0" Y="0" Z="45"/>
+                <ponto X="-3.57" Y="0" Z="44.91"/>
+                <ponto X="-10.68" Y="0" Z="44.20"/>
+                <ponto X="-17.61" Y="0" Z="42.79"/>
+                <ponto X="-24.26" Y="0" Z="40.71"/>
+                <ponto X="-33.50" Y="0" Z="36.40"/>
+                <ponto X="-41.55" Y="0" Z="30.80"/>
+                <ponto X="-49.94" Y="0" Z="21.67"/>
+                <ponto X="-55.20" Y="0" Z="11.19"/>
+          </translacao>
+          <rotacao tempo="22.92" angulo="360" eixoX="0" eixoY="1" eixoZ="0" />
+          <modelos>
+              <modelo ficheiro="terra.3d" colorX="0" colorY="0.5" colorZ="1" />
+          </modelos>
+            <grupo prof="4">
+                <translacao tempo="2">
+                    <ponto X="-3.2" Y="0" Z="0"/>
+                    <ponto X="-3.14" Y="0" Z="-0.56"/>
+                    <ponto X="-2.89" Y="0" Z="-1.27"/>
+                    <ponto X="-2.46" Y="0" Z="-1.91"/>
+                    <ponto X="-1.88" Y="0" Z="-2.40"/>
+                    <ponto X="-1.36" Y="0" Z="-2.71"/>
+                    <ponto X="-0.98" Y="0" Z="-2.85"/>
+                    <ponto X="-0.59" Y="0" Z="-2.94"/>
+                    <ponto X="0" Y="0" Z="-3"/>
+                    <ponto X="0.59" Y="0" Z="-2.94"/>
+                    <ponto X="0.98" Y="0" Z="-2.85"/>
+                    <ponto X="1.36" Y="0" Z="-2.71"/>
+                    <ponto X="1.88" Y="0" Z="-2.40"/>
+                    <ponto X="2.46" Y="0" Z="-1.91"/>
+                    <ponto X="2.89" Y="0" Z="-1.27"/>
+                    <ponto X="3.14" Y="0" Z="-0.56"/>
+                    <ponto X="3.2" Y="0" Z="0"/>
+                    <ponto X="3.14" Y="0" Z="0.56"/>
+                    <ponto X="2.89" Y="0" Z="1.27"/>
+                    <ponto X="2.46" Y="0" Z="1.91"/>
+                    <ponto X="1.88" Y="0" Z="2.40"/>
+                    <ponto X="1.36" Y="0" Z="2.71"/>
+                    <ponto X="0.98" Y="0" Z="2.85"/>
+                    <ponto X="0.59" Y="0" Z="2.94"/>
+                    <ponto X="0" Y="0" Z="3"/>
+                    <ponto X="-0.59" Y="0" Z="2.94"/>
+                    <ponto X="-0.98" Y="0" Z="2.85"/>
+                    <ponto X="-1.36" Y="0" Z="2.71"/>
+                    <ponto X="-1.88" Y="0" Z="2.40"/>
+                    <ponto X="-2.46" Y="0" Z="1.91"/>
+                    <ponto X="-2.89" Y="0" Z="1.27"/>
+                    <ponto X="-3.14" Y="0" Z="0.56"/>
+                </translacao>
+                <rotacao tempo="46.70" angulo="360" eixoX="0" eixoY="1" eixoZ="0" />
+                <modelos>
+                  <modelo ficheiro="lua.3d" colorX="0.75" colorY="0.75" colorZ="0.75" />
+                </modelos>
+            </grupo>
+      </grupo>
+       <grupo prof="3">
+          <translacao tempo="18.84">
+                <ponto X="-66" Y="0" Z="0"/>
+                <ponto X="-64.83" Y="0" Z="-10.11"/>
+                <ponto X="-57.83" Y="0" Z="-26.01"/>
+                <ponto X="-50.85" Y="0" Z="-34.42"/>
+                <ponto X="-42.06" Y="0" Z="-41.60"/>
+                <ponto X="-31.79" Y="0" Z="-47.32"/>
+                <ponto X="-24.29" Y="0" Z="-50.20"/>
+                <ponto X="-16.41" Y="0" Z="-52.30"/>
+                <ponto X="-4.14" Y="0" Z="-53.89"/>
+                <ponto X="0" Y="0" Z="-54"/>
+                <ponto X="4.14" Y="0" Z="-53.89"/>
+                <ponto X="16.41" Y="0" Z="-52.30"/>
+                <ponto X="24.29" Y="0" Z="-50.20"/>
+                <ponto X="31.79" Y="0" Z="-47.32"/>
+                <ponto X="42.06" Y="0" Z="-41.60"/>
+                <ponto X="50.85" Y="0" Z="-34.42"/>
+                <ponto X="57.83" Y="0" Z="-26.01"/>
+                <ponto X="64.83" Y="0" Z="-10.11"/>
+                <ponto X="66" Y="0" Z="0"/>
+                <ponto X="64.83" Y="0" Z="10.11"/>
+                <ponto X="57.83" Y="0" Z="26.01"/>
+                <ponto X="50.85" Y="0" Z="34.42"/>
+                <ponto X="42.06" Y="0" Z="41.60"/>
+                <ponto X="31.79" Y="0" Z="47.32"/>
+                <ponto X="24.29" Y="0" Z="50.20"/>
+                <ponto X="16.41" Y="0" Z="52.30"/>
+                <ponto X="4.14" Y="0" Z="53.89"/>
+                <ponto X="0" Y="0" Z="54"/>
+                <ponto X="-4.14" Y="0" Z="53.89"/>
+                <ponto X="-16.41" Y="0" Z="52.30"/>
+                <ponto X="-24.29" Y="0" Z="50.20"/>
+                <ponto X="-31.79" Y="0" Z="47.32"/>
+                <ponto X="-42.06" Y="0" Z="41.60"/>
+                <ponto X="-50.85" Y="0" Z="34.42"/>
+                <ponto X="-57.83" Y="0" Z="26.01"/>
+                <ponto X="-64.83" Y="0" Z="10.11"/>
+          </translacao>
+          <rotacao tempo="22.92" angulo="360" eixoX="0" eixoY="1" eixoZ="0" />
+          <modelos>
+              <modelo ficheiro="marte.3d" colorX="0.8" colorY="0.25" colorZ="0" />
+          </modelos>
+      </grupo>
+      <grupo prof="3">
+          <translacao tempo="24.16">
+              <ponto X="-91" Y="0" Z="0"/>
+              <ponto X="-89.38" Y="0" Z="-14.80"/>
+              <ponto X="-82.33" Y="0" Z="-33.63"/>
+              <ponto X="-73.62" Y="0" Z="-46.43"/>
+              <ponto X="-62.29" Y="0" Z="-57.58"/>
+              <ponto X="-53.48" Y="0" Z="-63.91"/>
+              <ponto X="-43.83" Y="0" Z="-69.22"/>
+              <ponto X="-33.49" Y="0" Z="-73.42"/>
+              <ponto X="-22.63" Y="0" Z="-76.51"/>
+              <ponto X="-11.40" Y="0" Z="-78.37"/>
+              <ponto X="0" Y="0" Z="-79"/>
+              <ponto X="11.40" Y="0" Z="-78.37"/>
+              <ponto X="22.63" Y="0" Z="-76.51"/>
+              <ponto X="33.49" Y="0" Z="-73.42"/>
+              <ponto X="43.83" Y="0" Z="-69.22"/>
+              <ponto X="53.48" Y="0" Z="-63.91"/>
+              <ponto X="62.29" Y="0" Z="-57.58"/>
+              <ponto X="73.62" Y="0" Z="-46.43"/>
+              <ponto X="82.33" Y="0" Z="-33.63"/>
+              <ponto X="89.38" Y="0" Z="-14.80"/>
+              <ponto X="91" Y="0" Z="0"/>
+              <ponto X="89.38" Y="0" Z="14.80"/>
+              <ponto X="82.33" Y="0" Z="33.63"/>
+              <ponto X="73.62" Y="0" Z="46.43"/>
+              <ponto X="62.29" Y="0" Z="57.58"/>
+              <ponto X="53.48" Y="0" Z="63.91"/>
+              <ponto X="43.83" Y="0" Z="69.22"/>
+              <ponto X="33.49" Y="0" Z="73.42"/>
+              <ponto X="22.63" Y="0" Z="76.51"/>
+              <ponto X="11.40" Y="0" Z="78.37"/>
+              <ponto X="0" Y="0" Z="79"/>
+              <ponto X="-11.40" Y="0" Z="78.37"/>
+              <ponto X="-22.63" Y="0" Z="76.51"/>
+              <ponto X="-33.49" Y="0" Z="73.42"/>
+              <ponto X="-43.83" Y="0" Z="69.22"/>
+              <ponto X="-53.48" Y="0" Z="63.91"/>
+              <ponto X="-62.29" Y="0" Z="57.58"/>
+              <ponto X="-73.62" Y="0" Z="46.43"/>
+              <ponto X="-82.33" Y="0" Z="33.63"/>
+              <ponto X="-89.38" Y="0" Z="14.80"/>
+          </translacao>
+          <rotacao tempo="16.61" angulo="360" eixoX="0" eixoY="1" eixoZ="0" />
+          <modelos>
+            <modelo ficheiro="jupiter.3d" colorX="0.752941" colorY="0.55" colorZ="0.0" />
+          </modelos>
+      </grupo>
+      <grupo prof="3">
+          <translacao tempo="27.79">
+              <ponto X="-124" Y="0" Z="0"/>
+              <ponto X="-120.10" Y="0" Z="-27.85"/>
+              <ponto X="-104.69" Y="0" Z="-60.01"/>
+              <ponto X="-90.39" Y="0" Z="-76.66"/>
+              <ponto X="-79.04" Y="0" Z="-86.29"/>
+              <ponto X="-66.44" Y="0" Z="-94.56"/>
+              <ponto X="-52.79" Y="0" Z="-101.34"/>
+              <ponto X="-38.31" Y="0" Z="-106.51"/>
+              <ponto X="-23.23" Y="0" Z="-110.01"/>
+              <ponto X="-15.54" Y="0" Z="-111.11"/>
+              <ponto X="0" Y="0" Z="-112"/>
+              <ponto X="15.54" Y="0" Z="-111.11"/>
+              <ponto X="23.23" Y="0" Z="-110.01"/>
+              <ponto X="38.31" Y="0" Z="-106.51"/>
+              <ponto X="52.79" Y="0" Z="-101.34"/>
+              <ponto X="66.44" Y="0" Z="-94.56"/>
+              <ponto X="79.04" Y="0" Z="-86.29"/>
+              <ponto X="90.39" Y="0" Z="-76.66"/>
+              <ponto X="104.69" Y="0" Z="-60.01"/>
+              <ponto X="120.10" Y="0" Z="-27.85"/>
+              <ponto X="124" Y="0" Z="0"/>
+              <ponto X="120.10" Y="0" Z="27.85"/>
+              <ponto X="104.69" Y="0" Z="60.01"/>
+              <ponto X="90.39" Y="0" Z="76.66"/>
+              <ponto X="79.04" Y="0" Z="86.29"/>
+              <ponto X="66.44" Y="0" Z="94.56"/>
+              <ponto X="52.79" Y="0" Z="101.34"/>
+              <ponto X="38.31" Y="0" Z="106.51"/>
+              <ponto X="23.23" Y="0" Z="110.01"/>
+              <ponto X="15.54" Y="0" Z="111.11"/>
+              <ponto X="0" Y="0" Z="112"/>
+              <ponto X="-15.54" Y="0" Z="111.11"/>
+              <ponto X="-23.23" Y="0" Z="110.01"/>
+              <ponto X="-38.31" Y="0" Z="106.51"/>
+              <ponto X="-52.79" Y="0" Z="101.34"/>
+              <ponto X="-66.44" Y="0" Z="94.56"/>
+              <ponto X="-79.04" Y="0" Z="86.29"/>
+              <ponto X="-90.39" Y="0" Z="76.66"/>
+              <ponto X="-104.69" Y="0" Z="60.01"/>
+              <ponto X="-120.10" Y="0" Z="27.85"/>
+          </translacao>
+          <rotacao tempo="16.61" angulo="360" eixoX="0" eixoY="1" eixoZ="0" />
+          <modelos>
+            <modelo ficheiro="saturno.3d" colorX="0.92" colorY="0.87" colorZ="0.79" />
+          </modelos>
+      </grupo>
+       <grupo prof="3">
+          <translacao tempo="29.81">
+                <ponto X="-159" Y="0" Z="0"/>
+                <ponto X="-156.18" Y="0" Z="-27.54"/>
+                <ponto X="-147.83" Y="0" Z="-54.11"/>
+                <ponto X="-134.24" Y="0" Z="-78.76"/>
+                <ponto X="-115.90" Y="0" Z="-100.62"/>
+                <ponto X="-101.35" Y="0" Z="-113.26"/>
+                <ponto X="-85.19" Y="0" Z="-124.11"/>
+                <ponto X="-57.53" Y="0" Z="-136.67"/>
+                <ponto X="-39.54" Y="0" Z="-142.38"/>
+                <ponto X="-19.92" Y="0" Z="-145.84"/>
+                <ponto X="0" Y="0" Z="-147"/>
+                <ponto X="19.92" Y="0" Z="-145.84"/>
+                <ponto X="39.54" Y="0" Z="-142.38"/>
+                <ponto X="57.53" Y="0" Z="-136.67"/>
+                <ponto X="85.19" Y="0" Z="-124.11"/>
+                <ponto X="101.35" Y="0" Z="-113.26"/>
+                <ponto X="115.90" Y="0" Z="-100.62"/>
+                <ponto X="134.24" Y="0" Z="-78.76"/>
+                <ponto X="147.83" Y="0" Z="-54.11"/>
+                <ponto X="156.18" Y="0" Z="-27.54"/>
+                <ponto X="159" Y="0" Z="0"/>
+                <ponto X="156.18" Y="0" Z="27.54"/>
+                <ponto X="147.83" Y="0" Z="54.11"/>
+                <ponto X="134.24" Y="0" Z="78.76"/>
+                <ponto X="115.90" Y="0" Z="100.62"/>
+                <ponto X="101.35" Y="0" Z="113.26"/>
+                <ponto X="85.19" Y="0" Z="124.11"/>
+                <ponto X="57.53" Y="0" Z="136.67"/>
+                <ponto X="39.54" Y="0" Z="142.38"/>
+                <ponto X="19.92" Y="0" Z="145.84"/>
+                <ponto X="0" Y="0" Z="147"/>
+                <ponto X="-19.92" Y="0" Z="145.84"/>
+                <ponto X="-39.54" Y="0" Z="142.38"/>
+                <ponto X="-57.53" Y="0" Z="136.67"/>
+                <ponto X="-85.19" Y="0" Z="124.11"/>
+                <ponto X="-101.35" Y="0" Z="113.26"/>
+                <ponto X="-115.90" Y="0" Z="100.62"/>
+                <ponto X="-134.24" Y="0" Z="78.76"/>
+                <ponto X="-147.83" Y="0" Z="54.11"/>
+                <ponto X="-156.18" Y="0" Z="27.54"/>
+          </translacao>
+          <rotacao tempo="17.92" angulo="360" eixoX="0" eixoY="1" eixoZ="0" />
+          <modelos>
+            <modelo ficheiro="urano.3d" colorX="0.67" colorY="0.92" colorZ="0.92" />
+          </modelos>
+      </grupo>
+      <grupo prof="3">
+          <translacao tempo="31.76">
+                <ponto X="-199" Y="0" Z="0"/>
+                <ponto X="-195.47" Y="0" Z="-35.04"/>
+                <ponto X="-189.26" Y="0" Z="-57.78"/>
+                <ponto X="-174.38" Y="0" Z="-90.08"/>
+                <ponto X="-153.33" Y="0" Z="-119.19"/>
+                <ponto X="-126.84" Y="0" Z="-144.08"/>
+                <ponto X="-95.86" Y="0" Z="-163.86"/>
+                <ponto X="-61.49" Y="0" Z="-177.84"/>
+                <ponto X="-37.27" Y="0" Z="-183.68"/>
+                <ponto X="-12.49" Y="0" Z="-186.63"/>
+                <ponto X="0" Y="0" Z="-187"/>
+                <ponto X="12.49" Y="0" Z="-186.63"/>
+                <ponto X="37.27" Y="0" Z="-183.68"/>
+                <ponto X="61.49" Y="0" Z="-177.84"/>
+                <ponto X="95.86" Y="0" Z="-163.86"/>
+                <ponto X="126.84" Y="0" Z="-144.08"/>
+                <ponto X="153.33" Y="0" Z="-119.19"/>
+                <ponto X="174.38" Y="0" Z="-90.08"/>
+                <ponto X="189.26" Y="0" Z="-57.78"/>
+                <ponto X="195.47" Y="0" Z="-35.04"/>
+                <ponto X="199" Y="0" Z="0"/>
+                <ponto X="195.47" Y="0" Z="35.04"/>
+                <ponto X="189.26" Y="0" Z="57.78"/>
+                <ponto X="174.38" Y="0" Z="90.08"/>
+                <ponto X="153.33" Y="0" Z="119.19"/>
+                <ponto X="126.84" Y="0" Z="144.08"/>
+                <ponto X="95.86" Y="0" Z="163.86"/>
+                <ponto X="61.49" Y="0" Z="177.84"/>
+                <ponto X="37.27" Y="0" Z="183.68"/>
+                <ponto X="12.49" Y="0" Z="186.63"/>
+                <ponto X="0" Y="0" Z="187"/>
+                <ponto X="-12.49" Y="0" Z="186.63"/>
+                <ponto X="-37.27" Y="0" Z="183.68"/>
+                <ponto X="-61.49" Y="0" Z="177.84"/>
+                <ponto X="-95.86" Y="0" Z="163.86"/>
+                <ponto X="-126.84" Y="0" Z="144.08"/>
+                <ponto X="-153.33" Y="0" Z="119.19"/>
+                <ponto X="-174.38" Y="0" Z="90.08"/>
+                <ponto X="-189.26" Y="0" Z="57.78"/>
+                <ponto X="-195.47" Y="0" Z="35.04"/>
+          </translacao>
+          <rotacao tempo="20" angulo="360" eixoX="0" eixoY="1" eixoZ="0" />
+          <modelos>
+            <modelo ficheiro="urano.3d" colorX="0" colorY="0" colorZ="1" />
+          </modelos>
+      </grupo>
+      <grupo prof="3">
+          <translacao tempo="31.76">
+                <ponto X="-70" Y="0" Z="0"/>
+                <ponto X="-69.44" Y="0" Z="-27.57"/>
+                <ponto X="-67.80" Y="0" Z="-54.71"/>
+                <ponto X="-65.08" Y="0" Z="-80.98"/>
+                <ponto X="-61.34" Y="0" Z="-105.98"/>
+                <ponto X="-56.63" Y="0" Z="-129.31"/>
+                <ponto X="-51.02" Y="0" Z="-150.60"/>
+                <ponto X="-44.61" Y="0" Z="-169.51"/>
+                <ponto X="-37.50" Y="0" Z="-185.75"/>
+                <ponto X="-29.80" Y="0" Z="-199.06"/>
+                <ponto X="-21.63" Y="0" Z="-209.23"/>
+                <ponto X="-13.11" Y="0" Z="-216.10"/>
+                <ponto X="-8.77" Y="0" Z="-218.26"/>
+                <ponto X="0" Y="0" Z="-220"/>
+                <ponto X="8.77" Y="0" Z="-218.26"/>
+                <ponto X="13.11" Y="0" Z="-216.10"/>
+                <ponto X="21.63" Y="0" Z="-209.23"/>
+                <ponto X="29.80" Y="0" Z="-199.06"/>
+                <ponto X="37.50" Y="0" Z="-185.75"/>
+                <ponto X="44.61" Y="0" Z="-169.51"/>
+                <ponto X="51.02" Y="0" Z="-150.60"/>
+                <ponto X="56.63" Y="0" Z="-129.31"/>
+                <ponto X="61.34" Y="0" Z="-105.98"/>
+                <ponto X="65.08" Y="0" Z="-80.98"/>
+                <ponto X="67.80" Y="0" Z="-54.71"/>
+                <ponto X="69.44" Y="0" Z="-27.57"/>
+                <ponto X="70" Y="0" Z="0"/>
+                <ponto X="69.44" Y="0" Z="27.57"/>
+                <ponto X="67.80" Y="0" Z="54.71"/>
+                <ponto X="65.08" Y="0" Z="80.98"/>
+                <ponto X="61.34" Y="0" Z="105.98"/>
+                <ponto X="56.63" Y="0" Z="129.31"/>
+                <ponto X="51.02" Y="0" Z="150.60"/>
+                <ponto X="44.61" Y="0" Z="169.51"/>
+                <ponto X="37.50" Y="0" Z="185.75"/>
+                <ponto X="29.80" Y="0" Z="199.06"/>
+                <ponto X="21.63" Y="0" Z="209.23"/>
+                <ponto X="13.11" Y="0" Z="216.10"/>
+                <ponto X="8.77" Y="0" Z="218.26"/>
+                <ponto X="0" Y="0" Z="220"/>
+                <ponto X="-8.77" Y="0" Z="218.26"/>
+                <ponto X="-13.11" Y="0" Z="216.10"/>
+                <ponto X="-21.63" Y="0" Z="209.23"/>
+                <ponto X="-29.80" Y="0" Z="199.06"/>
+                <ponto X="-37.50" Y="0" Z="185.75"/>
+                <ponto X="-44.61" Y="0" Z="169.51"/>
+                <ponto X="-51.02" Y="0" Z="150.60"/>
+                <ponto X="-56.63" Y="0" Z="129.31"/>
+                <ponto X="-61.34" Y="0" Z="105.98"/>
+                <ponto X="-65.08" Y="0" Z="80.98"/>
+                <ponto X="-67.80" Y="0" Z="54.71"/>
+                <ponto X="-69.44" Y="0" Z="27.57"/>
+          </translacao>
+          <rotacao tempo="20" angulo="360" eixoX="0" eixoY="1" eixoZ="0" />
+          <modelos>
+            <modelo ficheiro="teapot.3d" colorX="0" colorY="0" colorZ="1" />
+          </modelos>
+      </grupo>
+      <grupo prof="-1">
+      </grupo>
+  </grupo>
+</imagem>
