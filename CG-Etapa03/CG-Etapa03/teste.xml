@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<imagem>
+	<translacao tempo=10 />
+		<ponto X=1 Y=0 Z=1 />
+		<ponto X=1 Y=2 Z=3 />
+		<ponto X=1 Y=-1 Z=3 />
+		<ponto X=1 Y=3 Z=3 />
+		<ponto X=1 Y=4 Z=3 />
+		<ponto X=1 Y=5 Z=3 />
+		<ponto X=1 Y=6 Z=3 />
+		<ponto X=1 Y=4 Z=3 />
+		<ponto X=1 Y=3 Z=3 />
+		<ponto X=1 Y=2 Z=3 />
+		<ponto X=1 Y=1 Z=3 />
+		<ponto X=1 Y=1 Z=3 />
+		<ponto X=1 Y=1 Z=3 />
+		<ponto X=1 Y=1 Z=3 />
+		<ponto X=1 Y=0 Z=3 />
+		<ponto X=1 Y=0 Z=4 />
+		<ponto X=1 Y=0 Z=3 />
+		<ponto X=1 Y=0 Z=2 />
+		<ponto X=-1 Y=0 Z=1 />
+	</translacao>
+	<rotacao tempo=10 angulo=360 eixoX=0 eixoY=1 eixoZ=0 />
+	<rotacao tempo=11 angulo=360 eixoX=-1 eixoY=1 eixoZ=1 />
+	<rotacao tempo=12 angulo=360 eixoX=2 eixoY=1 eixoZ=0 />
+	<rotacao tempo=20 angulo=360 eixoX=3 eixoY=1 eixoZ=1 />
+</imagem>
