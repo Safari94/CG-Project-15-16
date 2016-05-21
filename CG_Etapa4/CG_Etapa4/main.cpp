@@ -42,10 +42,9 @@ Ponto3D color;
 int frame = 0;
 int timebase = 0;
 
-vector<string> files = vector<string>();
 
 // Luzes da cena a desenhar
-vector<Luz3D> luzes;
+vector<Luz> luzes;
 int luzes_counter;
 
 // Variáveis globais auxiliares de leitura de ficheiros XML
@@ -73,8 +72,8 @@ vector<string> sistemaSolarEst()
 	p = "gerador esfera 8 30 30 saturno.3d"; planetas.push_back(p);
 	p = "gerador esfera 4.7 30 30 urano.3d"; planetas.push_back(p);
 	p = "gerador esfera 4.5 30 30 neptuno.3d"; planetas.push_back(p);
-	readTeapot("teapot.patch");
-	initSupBezier(10, "teapot.3d");
+	//readTeapot("teapot.patch");
+	//initSupBezier(10, "teapot.3d");
 
 	return planetas;
 }
@@ -82,7 +81,7 @@ vector<string> sistemaSolarEst()
 	translacoes e rotacoes são cumulativas pelo que as variáveis globais translacoes e rotacoes representam
 	transformações comuns (definidas no grupo pai)
 	*/
-void gerarForma(string filename)
+void gerarForma(string filename, int i)
 {
 	ifstream f(filename);
 	string form;
@@ -132,9 +131,54 @@ void gerarForma(string filename)
 
 }
 
+void readLights(TiXmlElement* element)
+{
+	TiXmlElement* modelo;
 
-TiXmlElement * ant;
-string ficheiro_a_ler;
+	Luz luz;
+	modelo = element->FirstChildElement("luz");
+
+	while (modelo != NULL){
+		float *values;
+		string tipo = modelo->Attribute("tipo");
+		int gl_i;
+
+		if (tipo.compare("POINT") == 0){
+			gl_i = atoi(modelo->Attribute("id"));
+			values = (float*)malloc(4 * sizeof(float));
+			values[0] = atof(modelo->Attribute("posX"));
+			values[1] = atof(modelo->Attribute("posY"));
+			values[2] = atof(modelo->Attribute("posZ"));
+			values[3] = atof(modelo->Attribute("pv"));
+		}
+		else if (tipo.compare("AMBIENT") == 0){
+			gl_i = atoi(modelo->Attribute("id"));
+			values = (float*)malloc(3 * sizeof(float));
+			values[0] = atof(modelo->Attribute("ambR"));
+			values[1] = atof(modelo->Attribute("ambG"));
+			values[2] = atof(modelo->Attribute("ambB"));
+		}
+		else if (tipo.compare("DIFFUSE") == 0){
+			gl_i = atoi(modelo->Attribute("id"));
+			values = (float*)malloc(3 * sizeof(float));
+			values[0] = atof(modelo->Attribute("diffR"));
+			values[1] = atof(modelo->Attribute("diffG"));
+			values[2] = atof(modelo->Attribute("diffB"));
+		}
+
+		luz.gl_i = gl_i;
+		luz.tipo = tipo;
+		luz.values = values;
+
+		luzes.push_back(luz);
+
+		luzes_counter++;
+
+		modelo = modelo->NextSiblingElement("luz");
+	}
+}
+
+
 /**Função que faz parse de um nodo <grupo> do ficheiro XML*/
 void readGrupoFromXML(TiXmlElement* element)
 {
@@ -193,14 +237,30 @@ void readGrupoFromXML(TiXmlElement* element)
 		// Atualizar transformações atuais
 		transforms_atual.push_back(tw);
 	}
-	else if (strcmp(name, "modelos") == 0) {
+	else if (strcmp(name, "modelos") == 0){
 		modelo = element->FirstChildElement("modelo");
-		while (modelo) {
+		while (modelo){
 			string filename = modelo->Attribute("ficheiro");
 			ficheiro_a_ler = filename;
-			color.x = atof(modelo->Attribute("colorX"));
-			color.y = atof(modelo->Attribute("colorY"));
-			color.z = atof(modelo->Attribute("colorZ"));
+
+			// Textura ou cor difusa para um dado modelo
+			if (modelo->Attribute("textura") != NULL){
+				texturas.push_back(modelo->Attribute("textura"));
+				diffColors.push_back(0.0);
+				diffColors.push_back(0.0);
+				diffColors.push_back(0.0);
+				mode.push_back(0);
+			}
+			else if (modelo->Attribute("diffR") != NULL){
+				diffColors.push_back(atof(modelo->Attribute("diffR")));
+				diffColors.push_back(atof(modelo->Attribute("diffG")));
+				diffColors.push_back(atof(modelo->Attribute("diffB")));
+
+				texturas.push_back("empty");
+				mode.push_back(1);
+			}
+
+			ficheiros_a_ler.push_back(ficheiro_a_ler);
 
 			modelo = modelo->NextSiblingElement("modelo");
 		}
@@ -272,7 +332,15 @@ void readGrupoFromXML(TiXmlElement* element)
 		// CRIAR UM MODELO:
 		/*1 - Criar modelo*/
 		/*1.1 - Associar respetivo array de transformações*/
-		gerarForma(ficheiro_a_ler);
+		int n = ficheiros_a_ler.size();
+		int i;
+		for (i = 0; i < n; i++){
+			gerarForma(ficheiros_a_ler[i], i);
+		}
+		ficheiros_a_ler = vector<string>();
+		mode = vector<int>();
+		texturas = vector<string>();
+		diffColors = vector<float>();
 	}
 
 	// Chamada recursiva
@@ -296,6 +364,14 @@ void readFromXML(string filename)
 	TiXmlElement * aux;
 
 	element = node->FirstChildElement();
+
+	luzes = vector<Luz>();
+	luzes_counter = 0;
+	mode = vector<int>();
+	texturas = vector<string>();
+
+	readLights(element);
+	element = node->FirstChildElement("grupo");
 
 	readGrupoFromXML(element);
 }
@@ -376,6 +452,21 @@ void renderScene(void)
 
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT_AND_BACK, opcao);
+
+	for (Luz luz : luzes){
+		if (luz.tipo.compare("POINT") == 0){
+			glLightfv(GL_LIGHT0 + luz.gl_i, GL_POSITION, luz.values);
+		}
+		else if (luz.tipo.compare("AMBIENT") == 0){
+			glLightfv(GL_LIGHT0 + luz.gl_i, GL_AMBIENT, luz.values);
+		}
+		else if (luz.tipo.compare("DIFFUSE") == 0){
+			glLightfv(GL_LIGHT0 + luz.gl_i, GL_DIFFUSE, luz.values);
+		}
+	}
+	float white[4] = { 1, 1, 1, 1 };
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, white);
+
 
 	// Loop para desenhar formas
 	for (std::vector<Forma*>::iterator it = Formas.begin(); it != Formas.end(); ++it) {
@@ -577,6 +668,7 @@ int prepare_glut(string filename)
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
 	glewInit();
+	ilInit();
 
 
 	//Activar Buffers
@@ -593,9 +685,18 @@ int prepare_glut(string filename)
 	/*t->carregarImagem();
 */		
 
+	glEnable(GL_LIGHTING);
+	// Ciclo para inicialização das luzes individuais
+	for (int i = 0; i < luzes.size(); i++){
+		glEnable(GL_LIGHT0 + i);
+	}
+
+	cout << "a criar VBOs e a carregar imagens ...\n";
+
 	int n = Formas.size();
 	for (int i = 0; i < n; i++) {
 		Formas[i]->criarVBO(files[i]);
+		Formas[i]->carregarImagem();
 	}
 	iniciar(n);
 	printf("end.\n\n");

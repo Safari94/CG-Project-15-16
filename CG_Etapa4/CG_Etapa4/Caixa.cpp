@@ -217,7 +217,7 @@ void Caixa::draw() {
 	
 }
 
-void Paralelepipedo::desenharVBO() {
+void Caixa::desenharVBO() {
 	transformacoes();
 
 	glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
@@ -236,7 +236,7 @@ void Paralelepipedo::desenharVBO() {
 	glPopMatrix();
 }
 
-void Paralelepipedo::criarVBO(string filename)
+void Caixa::criarVBO(string filename)
 {
 	std::fstream file(filename, std::ios_base::in); // Nome do ficheiro supostamente temos de ir buscá-lo a um ficheiro .xml?
 

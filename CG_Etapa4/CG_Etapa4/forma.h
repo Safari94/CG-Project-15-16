@@ -127,6 +127,8 @@ public:
 	void adicionaIndice(int);
 	virtual ~Teapot();
 	void draw();
+	void criarVBO(string filename) override;
+	void desenharVBO() override;
 	//void criarVBO(string filename) override;
 	void readfromFile(string filename) override;
 private:

@@ -97,7 +97,7 @@ void Plano::writetoFile(string filename) {
 	glPopMatrix();
 }
 
-void Rectangulo::desenharVBO() {
+void Plano::desenharVBO() {
 	transformacoes();
 
 	glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
@@ -116,7 +116,7 @@ void Rectangulo::desenharVBO() {
 	glPopMatrix();
 }
 
-void Rectangulo::criarVBO(string filename)
+void Plano::criarVBO(string filename)
 {
 	std::fstream file(filename, std::ios_base::in); // Nome do ficheiro supostamente temos de ir buscá-lo a um ficheiro .xml?
 

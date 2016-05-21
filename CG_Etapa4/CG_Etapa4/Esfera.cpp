@@ -15,25 +15,25 @@ void Esfera::geraEsfera(float raio, int niveis, int fatias, string filename) {
 	writetoFile(filename);
 }
 
-void Esfera::write3DtoFile(string filename) {
+void Esfera::writetoFile(string filename) {
 
-	int arrayS = 3*(c*c*6);
-	int tSize = 2*(c*c*6);
+	int arrayS = 3*(n*n*6);
+	int tSize = 2*(n*n*6);
 
 	float* aVertex = (float*)malloc(arrayS*sizeof(float));
 	float* aNormal = (float*)malloc(arrayS*sizeof(float));
 	float* aTexture = (float*)malloc(tSize*sizeof(float));
 
-	int index = 6 * ((f + c)*c);
+	int index = 6 * ((f + n)*n);
 	int* Index = (int*)malloc(sizeof(int)*index);
 
 	double divH = (2 * M_PI) / f;
-	double divV = (M_PI) / c;
+	double divV = (M_PI) / n;
 	float angv, angh;
 
 	int pos = 0;
 	int tpos = 0;
-	for (int i = 0; i <= c; i++){
+	for (int i = 0; i <= n; i++){
 		angv = divV*i;
 		for (int j = 0; j <= f; j++){
 			angh = divH*j;
@@ -48,12 +48,12 @@ void Esfera::write3DtoFile(string filename) {
 			aNormal[pos++] = sin(angv)*cos(angh);
 
 			aTexture[tpos++] = 1 + ((float)j / (float)(f + 1));
-			aTexture[tpos++] = (float)i / (float)(c + 1);
+			aTexture[tpos++] = (float)i / (float)(n + 1);
 		}
 	}
 
 	pos = 0;
-	for (int i = 0; i<c; i++){
+	for (int i = 0; i<n; i++){
 		for (int j = 0; j<f; j++){
 			Index[pos++] = j + (i*(f + 1));
 			Index[pos++] = j + ((i + 1)*(f + 1));
