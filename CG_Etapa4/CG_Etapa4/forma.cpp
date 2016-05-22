@@ -322,9 +322,11 @@ unsigned char *imageData;
 float v_terreno[4]={0.7, 1, 0.7,1};
 
 void Forma::carregarImagem(){
-	ilGenImages(1,&te);
+	char* file = strdup(pathTexturas);
+	strcat(file, textfich.c_str());
+	ilGenImages(1, &te);
 	ilBindImage(te);
-	ilLoadImage((ILstring)"sol.jpg");
+	ilLoadImage((ILstring) file);
 	tw = ilGetInteger(IL_IMAGE_WIDTH);
 	th = ilGetInteger(IL_IMAGE_HEIGHT);
 	ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);

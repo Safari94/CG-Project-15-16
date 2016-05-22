@@ -6,6 +6,8 @@
 */
 
 #include "const.h"
+#include "tinyxml.h"
+#include "tinystr.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -183,47 +185,54 @@ void readLights(TiXmlElement* element)
 void readGrupoFromXML(TiXmlElement* element)
 {
 	TiXmlElement* modelo;
-	TiXmlElement* points;
+
+	ficheiros_a_ler = vector<string>();
+	mode = vector<int>();
+
 	const char* name = element->Value();
 
-	if ((strcmp(name, "translacao") == 0) || (strcmp(name, "escala") == 0)) {
-
+	if (strcmp(name, "escala") == 0){
+		Ponto3D p;
+		p.x = atof(element->Attribute("X"));
+		p.y = atof(element->Attribute("Y"));
+		p.z = atof(element->Attribute("Z"));
 
 		TransformsWrapper tw;
-
-
-		if (strcmp(name, "translacao") == 0) {
-			tw.translacao.b = 0;
-			tw.translacao.fst.x  = tw.translacao.fst.y = tw.translacao.fst.z = 0;
-			int time = atoi(element->Attribute("tempo"));
-			tw.translacao.tempo = time;
-			points = element->FirstChildElement("ponto");
-			while (points)
-			{
-				Ponto3D pp;
-				pp.x = atof(points->Attribute("X"));
-				pp.y = atof(points->Attribute("Y"));
-				pp.z = atof(points->Attribute("Z"));
-				tw.translacao.pts.push_back(pp);
-				points = points->NextSiblingElement("ponto");
-			}
-
-			tw.nome = "TRANSLATE";
-		}
-		else {
-			Ponto3D p;
-			p.x = atof(element->Attribute("X"));
-			p.y = atof(element->Attribute("Y"));
-			p.z = atof(element->Attribute("Z"));
-			tw.escala = p;
-			tw.nome = "SCALE";
-		}
+		tw.nome = "SCALE";
+		tw.escala = p;
 
 		// Atualizar transformações atuais
 		transforms_atual.push_back(tw);
 	}
-	else if (strcmp(name, "rotacao") == 0) {
-		Rotacao r;
+	else if (strcmp(name, "translacao") == 0){
+		TransformsWrapper tw;
+		tw.nome = "TRANSLATE";
+
+		tw.translacao.b = 0;
+		tw.translacao.tempo = atoi(element->Attribute("tempo")); // Tempo da translação
+		tw.translacao.first.x = tw.translacao.first.y = tw.translacao.first.z = 0;
+
+		TiXmlElement * pontos;
+		TiXmlElement * aux;
+		pontos = element;
+
+		vector<Ponto3D> vp = vector<Ponto3D>();
+		aux = pontos->FirstChildElement("ponto");
+		while (aux){
+			Ponto3D paux;
+			paux.x = atof(aux->Attribute("X"));
+			paux.y = atof(aux->Attribute("Y"));
+			paux.z = atof(aux->Attribute("Z"));
+			vp.push_back(paux);
+
+			aux = aux->NextSiblingElement("ponto");
+		}
+
+		tw.translacao.pontos = vp;
+		transforms_atual.push_back(tw);
+	}
+	else if (strcmp(name, "rotacao") == 0){
+		Rotacao3D r;
 		r.tempo = atoi(element->Attribute("tempo"));
 		r.ang = atof(element->Attribute("angulo"));
 		r.x = atof(element->Attribute("eixoX"));
@@ -265,7 +274,7 @@ void readGrupoFromXML(TiXmlElement* element)
 			modelo = modelo->NextSiblingElement("modelo");
 		}
 	}
-	else if (strcmp(name, "grupo") == 0) {
+	else if (strcmp(name, "grupo") == 0){
 		/*Desmarcar para fazer debug dos grupos do XML*/
 		//cout << "ID: " << element->Attribute("prof") << "\n";	
 		ant = element;
@@ -277,7 +286,7 @@ void readGrupoFromXML(TiXmlElement* element)
 	- Estamos no último grupo portanto próximo "Element" é nulo;
 	- O próximo elemento XML é um grupo, guardamos os dados referentes ao que acabou (ant).
 	*/
-	if (element->NextSiblingElement() != NULL && strcmp(element->NextSiblingElement()->Value(), "grupo") == 0) {
+	if (element->NextSiblingElement() != NULL && strcmp(element->NextSiblingElement()->Value(), "grupo") == 0){
 		Grupo g;
 
 		// Id de profundidade do grupo
@@ -286,38 +295,36 @@ void readGrupoFromXML(TiXmlElement* element)
 
 		// Calcular indice do irmão subtrair 1 e obtemos o(s) pai(s)
 		int indice_do_pai = -1;
-		if (grupos.size() > 0) {
+		if (grupos.size() > 0){
 			int i;
-			for (i = grupos.size() - 1; prof <= grupos.at(i).id; i--); // Para no irmao variável i
+			for (i = grupos.size() - 1; i >= 0 && prof <= grupos.at(i).id; i--); // Para no irmao variável i
 
-			if (i <= 0) {
-				indice_do_pai = 0;
+			if (i < 0){
+				indice_do_pai = -1;
 			}
-			else {
+			else{
 				indice_do_pai = i;
 			}
 		}
 
 		// Herdar transformações até ao indice_do_pai (se indice_do_pai==-1 não herda nada)
-		if (indice_do_pai != -1) {
-			//for (int k = 0; k <= indice_do_pai; k++){
+		if (indice_do_pai != -1){
 			// Percorrer e copiar transformações de um dado grupo pai
-			for (int i = 0; i < grupos.at(indice_do_pai).transfs.size(); i++) {
+			for (int i = 0; i < grupos.at(indice_do_pai).transfs.size(); i++){
 				acumulador.push_back(grupos.at(indice_do_pai).transfs.at(i));
 			}
-			//}
 		}
 		// Fazer acumulações se existirem
-		if (acumulador.size()>0) {
+		if (acumulador.size()>0){
 			g = Grupo(acumulador);
 			g.id = prof;
 
 			// Agora podemos atribuir as transformações do PRÓPRIO grupo
-			for (int i = 0; i < transforms_atual.size(); i++) {
+			for (int i = 0; i < transforms_atual.size(); i++){
 				g.transfs.push_back(transforms_atual.at(i));
 			}
 		}
-		else {
+		else{
 			// Não existem transformações para acumular (e.g. Início do ficheiro ou grupo sem pai(s))
 			g = Grupo(transforms_atual);
 			g.id = prof;
@@ -344,9 +351,10 @@ void readGrupoFromXML(TiXmlElement* element)
 	}
 
 	// Chamada recursiva
-	if (element->NextSiblingElement() != NULL) {
+	if (element->NextSiblingElement() != NULL){
 		readGrupoFromXML(element->NextSiblingElement());
 	}
+}
 }
 
 /**Parser xml extrai nomes de ficheiros que conteem os triângulos das figuras a desenhar*/
