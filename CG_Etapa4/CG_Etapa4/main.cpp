@@ -371,7 +371,7 @@ void readFromXML(string filename)
 	texturas = vector<string>();
 
 	readLights(element);
-	element = node->FirstChildElement("grupo");
+	element = node->FirstChildElement();
 
 	readGrupoFromXML(element);
 }
